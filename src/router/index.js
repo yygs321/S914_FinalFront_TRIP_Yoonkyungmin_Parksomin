@@ -4,6 +4,7 @@ import HomeView from '../views/HomeView.vue'
 import TripLoginView from '../views/TripLoginView.vue'
 
 
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -12,6 +13,7 @@ const routes = [
     name: 'home',
     component: HomeView
   },
+<<<<<<< HEAD
   {
     path: "/login",
     name: 'login',
@@ -22,6 +24,13 @@ const routes = [
 const router = new VueRouter({
   mode:"history",
   routes
+=======
+]
+
+const router = new VueRouter({
+  routes,
+  mode:"history"
+>>>>>>> 5594bba922da0ab25ebdb659126df75e058da53b
 })
 
 export default router
