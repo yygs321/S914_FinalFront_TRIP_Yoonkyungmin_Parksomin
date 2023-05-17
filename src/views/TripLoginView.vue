@@ -1,0 +1,23 @@
+<template>
+  <div class="login">
+    <trip-login></trip-login>
+
+  </div>
+</template>
+
+<script>
+import TripLogin from '@/components/TripLogin.vue'
+
+
+export default {
+  name: 'TripLogin',
+  components: { TripLogin },
+
+
+
+}
+</script>
+
+<style>
+
+</style>
