@@ -10,7 +10,7 @@ import TripLogin from '@/components/TripLogin.vue'
 
 
 export default {
-  name: 'TripLogin',
+  name: 'TripLoginView',
   components: { TripLogin },
 
 
