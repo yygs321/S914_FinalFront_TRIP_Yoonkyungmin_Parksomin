@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="container">
 	<trip-header></trip-header>
 	<div class="container position-relative my-4">
 		<form class="form-control rounded-pill w-75 d-flex position-absolute top-50 start-50 translate-middle z-1" style="transform: translate(-50%, -50%); height:15%;">
@@ -12,14 +12,14 @@
 
 	<div id="carouselExample" class="carousel slide">
 		<div class="carousel-inner">
-			<div class="carousel-item active row row-cols-4 ">
+			<div class="carousel-item active row row-cols-4 mx-0">
 				<img class="col" src="@/assets/sunmarina-beach.jpg" alt="">
 				<img class="col" src="@/assets/sunmarina-beach.jpg" alt="">
 				<img class="col" src="@/assets/sunmarina-beach.jpg" alt="">
 				<img class="col" src="@/assets/sunmarina-beach.jpg" alt="">
 			</div>
 
-			<div class="carousel-item row row-cols-4 g-4">
+			<div class="carousel-item row row-cols-4 mx-0">
 				<img class="col" src="@/assets/atlantisthepalm.jpg" alt="">
 				<img class="col" src="@/assets/atlantisthepalm.jpg" alt="">
 				<img class="col" src="@/assets/atlantisthepalm.jpg" alt="">
@@ -51,6 +51,9 @@
 	<style>
 	.container > input{
 		top: 100px;
+	}
+	.carousel-inner{
+		width: 100% !important;
 	}
 
 
