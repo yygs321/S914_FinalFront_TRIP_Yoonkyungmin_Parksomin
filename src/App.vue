@@ -36,7 +36,7 @@
       <p class="text-body-secondary" align="left">© MinTrip 2023</p>
     </div>
 
-    <div class="col mb-3" style="width: 120px;">
+    <div class="col mb-3" style="width: 20px;">
     </div>
 
     <div class="col mb-3 img-responsive center-block d-flex" style="width: 170px; height: 100px; ">
@@ -58,7 +58,7 @@
       </a>
     </div>
 
-    <div class="col mb-3" style="width: 120px;">
+    <div class="col mb-3" style="width: 30px;">
     </div>
 
     <div class="col mb-3">
