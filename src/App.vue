@@ -5,9 +5,9 @@
         <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
           <img src="./assets/logo.png" class="fs-4 w-25"/>
         </a>
-        <ul class="nav nav-pills">
-          <li class="nav-item"><a class="nav-link mx-1" aria-current="page"><router-link to="/login">로그인</router-link></a></li>
-          <li class="nav-item"><a class="nav-link mx-1"><router-link to="/signin">회원가입</router-link></a></li>
+        <ul class="nav nav-pills" >
+          <li class="nav-item"><a class="nav-link mx-1 rounded-pill" id="loginBtn" aria-current="page"><router-link to="/login">로그인</router-link></a></li>
+          <li class="nav-item"><a class="nav-link mx-1 rounded-pill" id="signBtn"><router-link to="/signin">회원가입</router-link></a></li>
         </ul>
       </header>
     </div>
@@ -91,6 +91,11 @@ body{
 .nav-pills > .nav-item > .nav-link {
   color: white;
   background-color: black !important;
+}
+
+#loginBtn > a, #signBtn > a{
+  text-decoration: none !important;
+  color: white !important;
 }
 
 
