@@ -1,35 +1,72 @@
 <template>
-  <div>
-    <form>
-    <img class="mb-4" src="/docs/5.3/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
-    <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
-    <div class="form-floating">
-      <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-      <label for="floatingInput">Email address</label>
-    </div>
-    <div class="form-floating">
-      <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-      <label for="floatingPassword">Password</label>
-    </div>
 
-    <div class="checkbox mb-3">
-      <label>
-        <input type="checkbox" value="remember-me"> Remember me
-      </label>
+  <header class="pt-5 pb-1">
+    <div class="container-xxl bd-gutter pt-md-3 pb-md-5 pr-3 pl-md-3">
+      <form>
+        <h1 id="title" class="h3 mb-5 fw-normal">Login</h1>
+
+
+        <div id="board">
+
+          <div class="form-floating mx-auto p-2 mt-5 mb-2" style="width: 70%;">
+            <p style="float:left">Id</p>
+            <input type="text" class="form-control" id="id" placeholder="ssafy">
+            <!--<label for="floatingInput">Email address</label>-->
+          </div>
+          
+          <div class="form-floating mx-auto p-2" style="width: 70%;">
+            <p type="password" style="float:left">Password</p>
+            <input type="password" class="form-control" id="password" placeholder="Password">
+          </div>
+  
+          
+        </div>
+        
+        <div class="form-floating mx-auto p-2 mt-5 mb-2" id="need">
+          <ul class="nav justify-content-center pb-3 mb-2">
+            <li class="nav-item"><a class="nav-link px-2 text-body-secondary"><router-link to="/signin">회원가입</router-link></a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">비밀번호 찾기</a></li>
+          </ul>
+        </div>
+
+
+        <div class="checkbox mt-1 mb-3" >
+          <label>
+            <input type="checkbox" value="remember-me"> Remember me
+          </label>
+        </div>
+        <button id="login" class="btn btn-lg btn-primary mb-2" style="width: 15%; background-color: rgb(124, 224, 194)" type="submit">Login</button>
+      </form>
     </div>
-    <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
-    <p class="mt-5 mb-3 text-body-secondary">© 2017–2023</p>
-  </form>
-  </div>
+  </header>
 </template>
 
 <script>
 export default {
-
+  name: 'TripLogin',
 }
 </script>
 
 <style>
+#need {
+text-decoration: underline;
+}
+
+#login {
+  border: none;
+  color: black;
+}
+
+#title{
+  font-size: 30px;
+  font-weight: bold;
+  font-family: Impact;
+}
+
+#board{
+  font-weight: bold;
+}
+
 
 </style>

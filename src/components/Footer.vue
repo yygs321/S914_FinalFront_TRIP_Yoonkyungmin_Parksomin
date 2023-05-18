@@ -2,7 +2,7 @@
   <!-- footer -->
 <div class="container">
   <footer class="row row-cols-1 row-cols-sm-2 row-cols-md-5 py-5 my-5 border-top">
-    <div class="col mb-3">
+    <div class="col mb-3" style="width: 20px;">
       <a href="/" class="d-flex align-items-center mb-3 link-body-emphasis text-decoration-none">
         <img src="./assets/logo.png" class="fs-4 w-50"/>
       </a>
@@ -34,7 +34,7 @@
     <div class="col mb-3" style="width: 30px;">
     </div>
 
-    <div class="col mb-3" >
+    <div class="col mb-3" style="width: 190px;">
       <h5>고객 센터 </h5>
       <ul class="nav flex-column">
         <li class="nav-item mb-2"><a href="https://www.ssafy.com/ksp/jsp/swp/swpMain.jsp" class="nav-link p-0 text-body-secondary">문의 페이지: ssafy.com</a></li>
@@ -48,7 +48,7 @@
 
 <script>
 export default {
-
+  name: 'TripFooter',
 }
 </script>
 

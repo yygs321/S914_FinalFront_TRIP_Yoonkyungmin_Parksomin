@@ -7,7 +7,7 @@
         </a>
         <ul class="nav nav-pills">
           <li class="nav-item"><a class="nav-link mx-1" aria-current="page"><router-link to="/login">로그인</router-link></a></li>
-          <li class="nav-item"><a href="#" class="nav-link mx-1">회원가입</a></li>
+          <li class="nav-item"><a class="nav-link mx-1"><router-link to="/signin">회원가입</router-link></a></li>
         </ul>
       </header>
     </div>
