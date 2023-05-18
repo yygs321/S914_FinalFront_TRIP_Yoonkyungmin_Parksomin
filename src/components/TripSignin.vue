@@ -40,7 +40,7 @@
         </div>
 
 
-        <button id="signin" class="btn btn-lg btn-primary mb-2" style="width: 15%; background-color: rgb(124, 224, 194)" type="submit">Sign in</button>
+        <button id="submit" class="btn btn-lg btn-primary mb-2 rounded-pill" style="width: 15%; background-color: rgb(124, 224, 194)" type="submit">Sign in</button>
       </form>
     </div>
   </header>
@@ -62,6 +62,12 @@ button#signin {
   color: black;
 }
 
+#submit {
+  border: none;
+  color: black;
+  font-weight: bold;
+}
+
 #title{
   font-size: 30px;
   font-weight: bold;
@@ -71,5 +77,7 @@ button#signin {
 #board{
   font-weight: bold;
 }
+
+
 
 </style>
