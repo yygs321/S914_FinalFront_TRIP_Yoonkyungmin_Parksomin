@@ -25,8 +25,8 @@
         
         <div class="form-floating mx-auto p-2 mt-5 mb-2" id="need">
           <ul class="nav justify-content-center pb-3 mb-2">
-            <li class="nav-item"><a class="nav-link px-2 text-body-secondary" id="sign"><router-link to="/signin">회원가입</router-link></a></li>
-            <li class="nav-item"><a class="nav-link px-2 text-body-secondary" id="pass"><router-link to="/signin">비밀번호 찾기</router-link></a></li>
+            <li class="nav-item"><a class="nav-link px-2 text-body-secondary" id="sign"><router-link to="/signup">회원가입</router-link></a></li>
+            <li class="nav-item"><a class="nav-link px-2 text-body-secondary" id="pass"><router-link to="/signup">비밀번호 찾기</router-link></a></li>
           </ul>
         </div>
 

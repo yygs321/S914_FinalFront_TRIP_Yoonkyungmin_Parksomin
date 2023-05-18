@@ -4,7 +4,7 @@
   <header class="pt-5 pb-1">
     <div class="container-xxl bd-gutter pt-md-3 pb-md-5 pr-3 pl-md-3">
       <form>
-        <h1 id="title" class="h3 mb-5 fw-normal">Sign in</h1>
+        <h1 id="title" class="h3 mb-5 fw-normal">Sign up</h1>
 
         <div id="board">
           
@@ -48,7 +48,7 @@
 
 <script>
 export default {
-  name: 'TripSignin',
+  name: 'TripSignup',
 }
 </script>
 

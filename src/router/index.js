@@ -2,7 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import TripLoginView from '../views/TripLoginView.vue'
-import TripSigninView from '../views/TripSigninView'
+import TripSignupView from '../views/TripSignupView'
 
 
 
@@ -20,9 +20,9 @@ const routes = [
     component: TripLoginView
   },
   {
-    path: "/signin",
-    name: 'signin',
-    component: TripSigninView
+    path: "/signup",
+    name: 'signup',
+    component: TripSignupView
   }
 ]
 
