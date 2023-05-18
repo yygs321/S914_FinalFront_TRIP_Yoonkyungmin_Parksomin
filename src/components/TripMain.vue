@@ -15,20 +15,19 @@
 			<div id="carouselExample2" class="carousel slide my-3">
 				<div class="carousel-inner">
 					<div class="carousel-item ms-0 active">
-						<div class="row">
-							<img class="col" src="@/assets/sunmarina-beach.jpg" alt="">
-							<img class="col" src="@/assets/sunmarina-beach.jpg" alt="">
-							<img class="col" src="@/assets/sunmarina-beach.jpg" alt="">
-							<img class="col" src="@/assets/sunmarina-beach.jpg" alt="">
+						<div class="row row-cols-4">
+							<custom-card-vue src="gyeongbokgung.jpg" title="서울 경복궁"></custom-card-vue>
+							<custom-card-vue src="광안리.jpg" title="부산 광안리"></custom-card-vue>
+							<custom-card-vue src="강릉경포대.jpg" title="강릉 경포대"></custom-card-vue>
+							<custom-card-vue src="남산타워.jpg" title="서울 남산타워"></custom-card-vue>
 						</div>
 					</div>
-
 					<div class="carousel-item ms-0">
-						<div class="row">
-							<img class="col" src="@/assets/sunmarina-beach.jpg" alt="">
-							<img class="col" src="@/assets/sunmarina-beach.jpg" alt="">
-							<img class="col" src="@/assets/sunmarina-beach.jpg" alt="">
-							<img class="col" src="@/assets/sunmarina-beach.jpg" alt="">
+						<div class="row row-cols-4">
+							<custom-card-vue src="섭지코지.jpg" title="제주 섭지코지"></custom-card-vue>
+							<custom-card-vue src="성산일출봉.jpg" title="제주 성산일출봉"></custom-card-vue>
+							<custom-card-vue src="불국사.jpg" title="경주 불국사"></custom-card-vue>
+							<custom-card-vue src="전주한옥마을.jpg" title="전주 한옥마을"></custom-card-vue>
 						</div>
 					</div>
 				</div>
@@ -50,86 +49,23 @@
 			<div class="carousel-inner">
 			<div class="carousel-item ms-0 active">
 				<div class="row">
-				<div class="col">
-					<div class="d-flex position-relative" style="height: 100%;">
-					<h2 class="d-flex position-absolute bottom-0 start-50 translate-middle z-1 text-white font-weight-bold" style="transform: translate(-50%, -50%);">
-						서울
-					</h2>
-					<img class="w-100 h-100 z-0 position-relative" src="@/assets/Seoul.jpg" alt="">
-					</div>
-				</div>
-				<div class="col">
-					<div class="d-flex position-relative" style="height: 100%;">
-					<h2 class="d-flex position-absolute bottom-0 start-50 translate-middle z-1 text-white font-weight-bold" style="transform: translate(-50%, -50%);">
-						부산
-					</h2>
-					<img class="w-100 h-100 z-0 position-relative" src="@/assets/busan.jpg" alt="">
-					</div>
-				</div>
-				<div class="col">
-					<div class="d-flex position-relative" style="height: 100%;">
-					<h2 class="d-flex position-absolute bottom-0 start-50 translate-middle z-1 text-white font-weight-bold" style="transform: translate(-50%, -50%);">
-						제주
-					</h2>
-					<img class="w-100 h-100 z-0 position-relative" src="@/assets/jeju.jpg" alt="">
-					</div>
-				</div>
+					<custom-card-area-vue src="Seoul.jpg" title="서울"></custom-card-area-vue>
+					<custom-card-area-vue src="busan.jpg" title="부산"></custom-card-area-vue>
+					<custom-card-area-vue src="jeju.jpg" title="제주"></custom-card-area-vue>
 				</div>
 			</div>
 			<div class="carousel-item ms-0">
 				<div class="row">
-				<div class="col">
-					<div class="d-flex position-relative" style="height: 100%;">
-					<h2 class="d-flex position-absolute bottom-0 start-50 translate-middle z-1 text-white font-weight-bold" style="transform: translate(-50%, -50%);">
-						대전
-					</h2>
-					<img class="w-100 h-100 z-0 position-relative" src="@/assets/daejeon.jpg" alt="">
-					</div>
-				</div>
-				<div class="col">
-					<div class="d-flex position-relative" style="height: 100%;">
-					<h2 class="d-flex position-absolute bottom-0 start-50 translate-middle z-1 text-white font-weight-bold" style="transform: translate(-50%, -50%);">
-						속초
-					</h2>
-					<img class="w-100 h-100 z-0 position-relative" src="@/assets/sokcho.jpg" alt="">
-					</div>
-				</div>
-				<div class="col">
-					<div class="d-flex position-relative" style="height: 100%;">
-					<h2 class="d-flex position-absolute bottom-0 start-50 translate-middle z-1 text-white font-weight-bold" style="transform: translate(-50%, -50%);">
-						경주
-					</h2>
-					<img class="w-100 h-100 z-0 position-relative" src="@/assets/gyungju.jpg" alt="">
-					</div>
-				</div>
+					<custom-card-area-vue src="daejeon.jpg" title="대전"></custom-card-area-vue>
+					<custom-card-area-vue src="sokcho.jpg" title="속초"></custom-card-area-vue>
+					<custom-card-area-vue src="gyungju.jpg" title="경주"></custom-card-area-vue>
 				</div>
 			</div>
 			<div class="carousel-item ms-0">
 				<div class="row">
-				<div class="col">
-					<div class="d-flex position-relative" style="height: 100%;">
-					<h2 class="d-flex position-absolute bottom-0 start-50 translate-middle z-1 text-white font-weight-bold" style="transform: translate(-50%, -50%);">
-						강릉
-					</h2>
-					<img class="w-100 h-100 z-0 position-relative" src="@/assets/gangneung.jpg" alt="">
-					</div>
-				</div>
-				<div class="col">
-					<div class="d-flex position-relative" style="height: 100%;">
-					<h2 class="d-flex position-absolute bottom-0 start-50 translate-middle z-1 text-white font-weight-bold" style="transform: translate(-50%, -50%);">
-						여수
-					</h2>
-					<img class="w-100 h-100 z-0 position-relative" src="@/assets/yeosu.jpg" alt="">
-					</div>
-				</div>
-				<div class="col">
-					<div class="d-flex position-relative" style="height: 100%;">
-					<h2 class="d-flex position-absolute bottom-0 start-50 translate-middle z-1 text-white font-weight-bold" style="transform: translate(-50%, -50%);">
-						전주
-					</h2>
-					<img class="w-100 h-100 z-0 position-relative" src="@/assets/jeonju.jpg" alt="">
-					</div>
-				</div>
+					<custom-card-area-vue src="gangneung.jpg" title="강릉"></custom-card-area-vue>
+					<custom-card-area-vue src="yeosu.jpg" title="여수"></custom-card-area-vue>
+					<custom-card-area-vue src="jeonju.jpg" title="전주"></custom-card-area-vue>
 				</div>
 			</div>
 
@@ -151,14 +87,15 @@
 </template>
 
 <script>
+import CustomCardVue from "./CustomCard.vue"
+import CustomCardAreaVue from "./CustomCardArea.vue"
 export default {
-	name: 'TripMain'
+	name: 'TripMain',
+	components:{CustomCardVue, CustomCardAreaVue}
 }
 </script>
 
 <style scoped>
-	.d-flex > img {
-		filter: brightness(50%);
-	}
+
 	
 </style>
