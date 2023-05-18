@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<div class="container position-relative my-4">
-			<form class="form-control border-white shadow rounded-pill w-75 d-flex position-absolute top-50 start-50 translate-middle z-1" style="transform: translate(-50%, -50%); height:15%;">
+			<form class="form-control rounded-pill w-75 d-flex position-absolute top-50 start-50 translate-middle z-1" style="transform: translate(-50%, -50%); height:15%;">
 				<a class="btn"><i class="fa-solid fa-magnifying-glass" style="font-size: 1.5rem;"></i></a>
 				<input type="text" class="form-control w-75 border-white" placeholder="어디로 가시나요?">
 			</form>
@@ -90,7 +90,7 @@
 import CustomCardVue from "./CustomCard.vue"
 import CustomCardAreaVue from "./CustomCardArea.vue"
 export default {
-	name: 'TripMain',
+	name: 'TripNotice',
 	components:{CustomCardVue, CustomCardAreaVue}
 }
 </script>
