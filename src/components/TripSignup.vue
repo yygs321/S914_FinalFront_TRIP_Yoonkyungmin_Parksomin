@@ -67,7 +67,7 @@ button#signin {
   color: black;
   font-weight: bold;
   background-color: rgb(124, 224, 194);
-  width: 15%;
+  width: 20%;
 }
 
 #title{

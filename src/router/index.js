@@ -6,6 +6,7 @@ import TripSignupView from '../views/TripSignupView'
 import TripListView from '../views/TripListView'
 import MyPageView from '../views/MyPageView.vue'
 import TripDetailView from '../views/TripDetailView.vue'
+import NoticeListView from '../views/NoticeListView.vue'
 
 
 
@@ -45,7 +46,11 @@ const routes = [
     component: TripDetailView
   },
 
-
+  {
+    path: "/notice",
+    name: 'notice',
+    component: NoticeListView
+  }
 ]
 
 const router = new VueRouter({
