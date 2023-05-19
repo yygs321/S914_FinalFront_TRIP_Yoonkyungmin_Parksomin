@@ -25,8 +25,8 @@
         
         <div class="form-floating mx-auto p-2 mt-5 mb-2" id="need">
           <ul class="nav justify-content-center pb-3 mb-2">
-            <li class="nav-item"><a class="nav-link px-2 text-body-secondary"><router-link to="/signin">회원가입</router-link></a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">비밀번호 찾기</a></li>
+            <li class="nav-item"><a class="nav-link px-2 text-body-secondary" id="sign"><router-link to="/signup">회원가입</router-link></a></li>
+            <li class="nav-item"><a class="nav-link px-2 text-body-secondary" id="pass"><router-link to="/signup">비밀번호 찾기</router-link></a></li>
           </ul>
         </div>
 
@@ -36,7 +36,7 @@
             <input type="checkbox" value="remember-me"> Remember me
           </label>
         </div>
-        <button id="login" class="btn btn-lg btn-primary mb-2" style="width: 15%; background-color: rgb(124, 224, 194)" type="submit">Login</button>
+        <button id="submit" class="btn btn-lg btn-primary mb-2 rounded-pill" style="width: 15%; background-color: rgb(124, 224, 194)" type="submit">Login</button>
       </form>
     </div>
   </header>
@@ -53,9 +53,10 @@ export default {
 text-decoration: underline;
 }
 
-#login {
+#submit {
   border: none;
   color: black;
+  font-weight: bold;
 }
 
 #title{
@@ -68,5 +69,9 @@ text-decoration: underline;
   font-weight: bold;
 }
 
+#sign > a, #pass > a{
+  text-decoration: none !important;
+  color: black !important;
+}
 
 </style>

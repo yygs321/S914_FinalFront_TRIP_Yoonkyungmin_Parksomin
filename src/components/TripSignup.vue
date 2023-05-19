@@ -4,7 +4,7 @@
   <header class="pt-5 pb-1">
     <div class="container-xxl bd-gutter pt-md-3 pb-md-5 pr-3 pl-md-3">
       <form>
-        <h1 id="title" class="h3 mb-5 fw-normal">Sign in</h1>
+        <h1 id="title" class="h3 mb-5 fw-normal">Sign up</h1>
 
         <div id="board">
           
@@ -40,7 +40,7 @@
         </div>
 
 
-        <button id="signin" class="btn btn-lg btn-primary mb-2" style="width: 15%; background-color: rgb(124, 224, 194)" type="submit">Sign in</button>
+        <button id="submit" class="btn btn-lg btn-primary mb-2 rounded-pill" style="width: 15%; background-color: rgb(124, 224, 194)" type="submit">Sign in</button>
       </form>
     </div>
   </header>
@@ -48,7 +48,7 @@
 
 <script>
 export default {
-  name: 'TripSignin',
+  name: 'TripSignup',
 }
 </script>
 
@@ -62,6 +62,12 @@ button#signin {
   color: black;
 }
 
+#submit {
+  border: none;
+  color: black;
+  font-weight: bold;
+}
+
 #title{
   font-size: 30px;
   font-weight: bold;
@@ -71,5 +77,7 @@ button#signin {
 #board{
   font-weight: bold;
 }
+
+
 
 </style>
