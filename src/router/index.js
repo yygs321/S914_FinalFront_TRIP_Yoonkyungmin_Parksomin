@@ -5,6 +5,7 @@ import TripLoginView from '../views/TripLoginView.vue'
 import TripSignupView from '../views/TripSignupView'
 import TripListView from '../views/TripListView'
 import MyPageView from '../views/MyPageView.vue'
+import TripDetailView from '../views/TripDetailView.vue'
 
 
 
@@ -36,7 +37,15 @@ const routes = [
     path: "/mypage",
     name: 'mypage',
     component: MyPageView
-  }
+  },
+
+  {
+    path: "/detail/:id",
+    name: 'detail',
+    component: TripDetailView
+  },
+
+
 ]
 
 const router = new VueRouter({
