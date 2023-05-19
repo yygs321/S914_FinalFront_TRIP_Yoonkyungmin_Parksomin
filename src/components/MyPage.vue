@@ -28,7 +28,7 @@
                                         </div>
                                         <div class="modal-footer">
                                         <a href="#" type="button" class="btn btn-outline-danger">탈퇴</a>
-                                        <button type="button" class="btn btn-link ms-auto" data-bs-dismiss="modal">아니오</button>
+                                        <button type="button" class="btn ms-auto" data-bs-dismiss="modal" id="noBtn">아니오</button>
                                         </div>
                                 </div>
                                 </div>
@@ -47,6 +47,10 @@ export default {
 </script>
 
 <style>
-
+#noBtn {
+  background-color: white;
+  color: blue;
+  border: 1px solid  blue; /* Green */
+}
 
 </style>
