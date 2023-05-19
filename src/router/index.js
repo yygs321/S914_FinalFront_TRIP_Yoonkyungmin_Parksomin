@@ -2,7 +2,8 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import TripLoginView from '../views/TripLoginView.vue'
-import TripSignupView from '../views/TripSignupView'
+import TripSignupView from '../views/TripSignupView.vue'
+import MyPageView from '../views/MyPageView.vue'
 
 
 
@@ -23,6 +24,11 @@ const routes = [
     path: "/signup",
     name: 'signup',
     component: TripSignupView
+  },
+  {
+    path: "/mypage",
+    name: 'mypage',
+    component: MyPageView
   }
 ]
 
