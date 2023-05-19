@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import TripLoginView from '../views/TripLoginView.vue'
 import TripSignupView from '../views/TripSignupView'
+import TripListView from '../views/TripListView'
 
 
 
@@ -23,6 +24,11 @@ const routes = [
     path: "/signup",
     name: 'signup',
     component: TripSignupView
+  },
+  {
+    path: "/list",
+    name: 'list',
+    component: TripListView
   }
 ]
 
