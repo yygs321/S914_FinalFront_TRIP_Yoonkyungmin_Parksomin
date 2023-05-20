@@ -31,7 +31,7 @@
 
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary"> 공 지 사 항</h6>
+            <h3 class="m-0 font-weight-bold text-primary"> Notice </h3>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -65,7 +65,7 @@
                                 <thead>
                                     <tr role="row">
                                         <th class="sorting sorting_asc" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" style="width: 10%;" id="no">No</th>
-                                        <th class="sorting" aria-controls="dataTable" rowspan="1" colspan="1" style="width: 30%" id="title">제목</th>
+                                        <th class="sorting" aria-controls="dataTable" rowspan="1" colspan="1" style="width: 30%" id="noticeTitle">제목</th>
                                         <th class="sorting" aria-controls="dataTable" rowspan="1" colspan="1" style="width: 40%" id="content">내용</th>
                                         <th class="sorting" aria-controls="dataTable" rowspan="1" colspan="1" style="width: 20%" id="date">작성 날짜</th>
                                     </tr>
@@ -146,9 +146,7 @@ export default {
 <style scoped>
 
 
-.sorting{
-    font-size: 20px;
-}
+
 
 
 </style>
