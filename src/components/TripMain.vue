@@ -9,34 +9,23 @@
 			<img class="w-100 z-0 position-relative" src="@/assets/search_back.jpg" height="400px" alt="">
 		</div>
 
-		<h1 class="text-start ms-2">인기 여행지 10</h1>
-
+		<h1 class="text-start ms-2">인기 여행지</h1>
 		<div class="container">
-			<div id="carouselTrip" class="carousel slide my-3">
+			<div id="carouselTrip2" class="carousel slide my-3">
 				<div class="carousel-inner">
-					<div class="carousel-item ms-0 active">
+					<div v-for="(items, index) in carouselItems" :key="index" :class="['carousel-item', { 'active': index === 0 }]">
 						<div class="row row-cols-4">
-							<custom-card-vue src="gyeongbokgung.jpg" title="서울 경복궁"></custom-card-vue>
-							<custom-card-vue src="광안리.jpg" title="부산 광안리"></custom-card-vue>
-							<custom-card-vue src="강릉경포대.jpg" title="강릉 경포대"></custom-card-vue>
-							<custom-card-vue src="남산타워.jpg" title="서울 남산타워"></custom-card-vue>
-						</div>
-					</div>
-					<div class="carousel-item ms-0">
-						<div class="row row-cols-4">
-							<custom-card-vue src="섭지코지.jpg" title="제주 섭지코지"></custom-card-vue>
-							<custom-card-vue src="성산일출봉.jpg" title="제주 성산일출봉"></custom-card-vue>
-							<custom-card-vue src="불국사.jpg" title="경주 불국사"></custom-card-vue>
-							<custom-card-vue src="전주한옥마을.jpg" title="전주 한옥마을"></custom-card-vue>
+							<custom-card-vue v-for="(item, subIndex) in items" :key="subIndex" :src="item.firstImage" :title="item.title" :rating="item.rating" :id="item.contentId"></custom-card-vue>
 						</div>
 					</div>
 				</div>
 
-				<button class="carousel-control-prev" type="button" data-bs-target="#carouselTrip" data-bs-slide="prev">
+
+				<button class="carousel-control-prev" type="button" data-bs-target="#carouselTrip2" data-bs-slide="prev">
 					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
 					<span class="visually-hidden">Previous</span>
 				</button>
-				<button class="carousel-control-next" type="button" data-bs-target="#carouselTrip" data-bs-slide="next">
+				<button class="carousel-control-next" type="button" data-bs-target="#carouselTrip2" data-bs-slide="next">
 					<span class="carousel-control-next-icon" aria-hidden="true"></span>
 					<span class="visually-hidden">Next</span>
 				</button>
@@ -76,8 +65,8 @@
 			<span class="visually-hidden">Previous</span>
 			</button>
 			<button class="carousel-control-next" type="button" data-bs-target="#carouselArea" data-bs-slide="next">
-			<span class="carousel-control-next-icon" aria-hidden="true"></span>
-			<span class="visually-hidden">Next</span>
+				<span class="carousel-control-next-icon" aria-hidden="true"></span>
+				<span class="visually-hidden">Next</span>
 			</button>
 		</div>
 		</div>
@@ -89,9 +78,53 @@
 <script>
 import CustomCardVue from "./CustomCard.vue"
 import CustomCardAreaVue from "./CustomCardArea.vue"
+import http from "@/axios/axios-common.js"
 export default {
 	name: 'TripMain',
-	components:{CustomCardVue, CustomCardAreaVue}
+	components:{CustomCardVue, CustomCardAreaVue},
+	data(){
+		return{
+			carouselItems: [],
+			rawData: [],
+		};
+	},
+
+	created() {
+		// const rawData = [
+			// { src: "gyeongbokgung.jpg", title: "서울 경복궁", rating: 4.5 },
+		// { src: "광안리.jpg", title: "부산 광안리", rating: 4.1 },
+		// { src: "강릉경포대.jpg", title: "강릉 경포대", rating: 4.3 },
+		// { src: "남산타워.jpg", title: "서울 남산타워", rating: 3.1 },
+		// { src: "섭지코지.jpg", title: "제주 섭지코지", rating: 3.8  },
+		// { src: "성산일출봉.jpg", title: "제주 성산일출봉", rating: 2.5  },
+		// { src: "불국사.jpg", title: "경주 불국사", rating: 1.5  },
+		// { src: "전주한옥마을.jpg", title: "전주 한옥마을", rating: 2.8  }
+		// ];
+		
+
+		this.selectTop();
+		
+		// console.log(this.rawData);
+
+
+	},
+	methods:{
+		selectTop(){
+			http.get("/attractions/top")
+				.then((response) => 
+				{
+					//sconsole.log(response.data);
+					this.rawData = response.data
+					
+				})
+				.then(()=>{
+					const itemsPerRow = 4;
+					for (let i = 0; i < this.rawData.length; i += itemsPerRow) {
+						this.carouselItems.push(this.rawData.slice(i, i + itemsPerRow));
+					}
+				})
+		},
+	},
 }
 </script>
 

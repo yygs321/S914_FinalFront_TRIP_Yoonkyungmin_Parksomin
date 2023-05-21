@@ -40,7 +40,7 @@
         </div>
 
 
-        <button id="submit" class="btn btn-lg btn-primary mb-2 rounded-pill" type="submit">Sign up</button>
+        <button id="submit" class="btn btn-lg btn-primary mb-2 rounded-pill" style="width: 15%;" type="submit">Sign up</button>
       </form>
     </div>
   </header>
@@ -67,7 +67,6 @@ button#signin {
   color: black;
   font-weight: bold;
   background-color: rgb(124, 224, 194);
-  width: 20%;
 }
 
 #title{

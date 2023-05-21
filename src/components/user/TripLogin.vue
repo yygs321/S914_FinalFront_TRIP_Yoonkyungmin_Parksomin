@@ -36,7 +36,7 @@
             <input type="checkbox" value="remember-me"> Remember me
           </label>
         </div>
-        <button id="submit" class="btn btn-lg btn-primary mb-2 rounded-pill" style="width: 15%; background-color: rgb(124, 224, 194)" type="submit">Login</button>
+        <button id="submit" class="btn btn-lg btn-primary mb-2 rounded-pill" style="width: 15%;" type="submit">Login</button>
       </form>
     </div>
   </header>
@@ -74,4 +74,10 @@ text-decoration: underline;
   color: black !important;
 }
 
+#submit {
+  border: none;
+  color: black;
+  font-weight: bold;
+  background-color: rgb(124, 224, 194);
+}
 </style>

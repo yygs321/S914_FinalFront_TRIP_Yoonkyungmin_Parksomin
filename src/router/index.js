@@ -5,7 +5,8 @@ import TripLoginView from '../views/TripLoginView.vue'
 import TripSignupView from '../views/TripSignupView'
 import TripListView from '../views/TripListView'
 import MyPageView from '../views/MyPageView.vue'
-import NoticeListView from '../views/NoticeListView.vue'
+import TripDetailView from '../views/TripDetailView.vue'
+import NoticeBoardView from '../views/NoticeBoardView.vue'
 
 
 
@@ -38,10 +39,17 @@ const routes = [
     name: 'mypage',
     component: MyPageView
   },
+
   {
-    path: "/notice",
+    path: "/detail/:id",
+    name: 'detail',
+    component: TripDetailView
+  },
+
+  {
+    path: "/notices",
     name: 'notice',
-    component: NoticeListView
+    component: NoticeBoardView
   }
 ]
 

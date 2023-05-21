@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import TripLogin from '@/components/TripLogin.vue'
+import TripLogin from '@/components/user/TripLogin.vue'
 
 
 export default {
