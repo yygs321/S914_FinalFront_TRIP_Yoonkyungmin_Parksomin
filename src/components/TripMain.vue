@@ -90,30 +90,13 @@ export default {
 	},
 
 	created() {
-		// const rawData = [
-			// { src: "gyeongbokgung.jpg", title: "서울 경복궁", rating: 4.5 },
-		// { src: "광안리.jpg", title: "부산 광안리", rating: 4.1 },
-		// { src: "강릉경포대.jpg", title: "강릉 경포대", rating: 4.3 },
-		// { src: "남산타워.jpg", title: "서울 남산타워", rating: 3.1 },
-		// { src: "섭지코지.jpg", title: "제주 섭지코지", rating: 3.8  },
-		// { src: "성산일출봉.jpg", title: "제주 성산일출봉", rating: 2.5  },
-		// { src: "불국사.jpg", title: "경주 불국사", rating: 1.5  },
-		// { src: "전주한옥마을.jpg", title: "전주 한옥마을", rating: 2.8  }
-		// ];
-		
-
 		this.selectTop();
-		
-		// console.log(this.rawData);
-
-
 	},
 	methods:{
 		selectTop(){
 			http.get("/attractions/top")
 				.then((response) => 
 				{
-					//sconsole.log(response.data);
 					this.rawData = response.data
 					
 				})

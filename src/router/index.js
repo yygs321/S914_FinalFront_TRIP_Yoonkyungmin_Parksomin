@@ -41,7 +41,7 @@ const routes = [
   },
 
   {
-    path: "/detail/:id",
+    path: "/detail",
     name: 'detail',
     component: TripDetailView
   },
