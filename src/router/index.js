@@ -6,7 +6,7 @@ import TripSignupView from '../views/TripSignupView'
 import TripListView from '../views/TripListView'
 import MyPageView from '../views/MyPageView.vue'
 import TripDetailView from '../views/TripDetailView.vue'
-import NoticeListView from '../views/NoticeListView.vue'
+import NoticeBoardView from '../views/NoticeBoardView.vue'
 
 
 
@@ -47,9 +47,9 @@ const routes = [
   },
 
   {
-    path: "/notice",
+    path: "/notices",
     name: 'notice',
-    component: NoticeListView
+    component: NoticeBoardView
   }
 ]
 

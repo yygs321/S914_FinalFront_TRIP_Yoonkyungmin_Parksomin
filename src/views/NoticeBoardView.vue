@@ -4,7 +4,7 @@
     <trip-header></trip-header>
     <div class="container">
 
-      <notice-list></notice-list>
+      <notice-board></notice-board>
     </div>
 
   </div>
@@ -13,10 +13,10 @@
 
 <script>
 import TripHeader from '@/components/TripHeader.vue'
-import NoticeList from '@/components/NoticeList.vue'
+import NoticeBoard from '@/components/notice/NoticeBoard.vue'
 export default {
-  name:'NoticeListView',
-  components: { TripHeader, NoticeList},
+  name:'NoticeBoardView',
+  components: { TripHeader, NoticeBoard},
 
 }
 </script>

@@ -1,37 +1,9 @@
 <template>
 <div class="dashboard">
-    <!-- <h2 class="dashboard-title">공지사항</h2>
-    <div v-for="notice in notices" :key="notice.id" class="notice-item">
-        <table id="todo-list">
-            <colgroup>
-            <col style="width: 20%" />
-            <col style="width: 30%" />
-            <col style="width: 50%" />
-            </colgroup>
-            <thead>
-            <tr>
-                <th>완료 여부</th>
-                <th>번 호</th>
-                <th>할 일</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr v-for="notice in notices" :key="notice.id" class="notice-item">
-                <td><h3 class="notice-title">{{ notice.title }}</h3></td>
-                <td><p class="notice-content">{{ notice.content }}</p></td>
-                <td><span class="notice-date"></span></td>
-                <td><span class="notice-author">작성자: {{ notice.author }}</span></td>
-            </tr>
-            </tbody>
-    </table>
-
-
-        
-    </div> -->
 
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary"> 공 지 사 항</h6>
+            <h3 class="m-0 font-weight-bold text-primary"> Notice </h3>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -42,7 +14,6 @@
                                 <div style="float:left">
                                     <a>정렬방식</a>
                                     <select name="dataTable_length" aria-controls="dataTable" class="custom-select custom-select-sm form-control form-control-sm ">
-                                        <option value="10">제목순</option>
                                         <option value="25">최신순</option>
                                         <option value="50">오래된 순</option>
                                     </select> 
@@ -59,34 +30,36 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row mt-4">
+                    <div class="row mt-4" v-if="notices.length">
                         <div class="col-sm-12">
                             <table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;" >
                                 <thead>
                                     <tr role="row">
                                         <th class="sorting sorting_asc" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" style="width: 10%;" id="no">No</th>
-                                        <th class="sorting" aria-controls="dataTable" rowspan="1" colspan="1" style="width: 30%" id="title">제목</th>
+                                        <th class="sorting" aria-controls="dataTable" rowspan="1" colspan="1" style="width: 30%" id="noticeTitle">제목</th>
                                         <th class="sorting" aria-controls="dataTable" rowspan="1" colspan="1" style="width: 40%" id="content">내용</th>
                                         <th class="sorting" aria-controls="dataTable" rowspan="1" colspan="1" style="width: 20%" id="date">작성 날짜</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr class="odd">
-                                            <td class="sorting_1">Airi Satou</td>
-                                            <td>Accountant</td>
-                                            <td>Tokyo</td>
-                                            <td>33</td>
+                                    <tr class="odd" v-for="notice in notices" :key="notice.id">
+                                            <td>{{ notice.id }}</td>
+                                            <td>{{ notice.title }}</td>
+                                            <td>{{ notice.content }}</td>
+                                            <td>{{ notice.createdAt }}</td>
                                     </tr>
-                                    <tr class="even">
-                                            <td class="sorting_1">Angelica Ramos</td>
-                                            <td>Chief Executive Officer (CEO)</td>
-                                            <td>London</td>
-                                            <td>47</td>
-                                    </tr>
+                                    
                                 </tbody>
                             </table>
                         </div>
+                        <div class="row mr-1 mt-3"> 
+                            <a class="" id="writeBtn" aria-current="page"><router-link to="/login">글쓰기</router-link>
+                            </a>
+                        </div>
                     </div>
+                    <div v-else class="text-center">내용이 없습니다.</div>
+                    
+                    
                     <div class="row mt-3">
                         <!-- Pagination -->
                         <nav aria-label="Page navigation">
@@ -117,28 +90,24 @@
 </template>
 
 <script>
+import http from "@/axios/axios-common.js"
+
 export default {
-    name: 'NoticeList',
+    name: 'NoticeBoard',
     data() {
         return {
-            notices: [
-                {
-                    id: 1,
-                    title: '공지사항 제목 1',
-                    content: '공지사항 내용 1',
-                    date: '2023-05-19',
-                    author: '관리자',
-                },
-                {
-                    id: 2,
-                    title: '공지사항 제목 2',
-                    content: '공지사항 내용 2',
-                    date: '2023-05-18',
-                    author: '관리자',
-                },
-            // Add more notices as needed
-            ],
+            notices: [],
         };
+    },
+    created() {
+        this.selectAll();
+    },
+    methods: {
+        selectAll() {
+            http.get("/notices")
+                .then((response) => (this.notices = response.data))
+                .catch(console.log("data확인"))
+        },
     },
 };
 </script>
@@ -146,8 +115,13 @@ export default {
 <style scoped>
 
 
-.sorting{
-    font-size: 20px;
+#writeBtn >a {
+border: none;
+color: black;
+font-weight: bold;
+text-decoration: none !important;
+float:right
+
 }
 
 

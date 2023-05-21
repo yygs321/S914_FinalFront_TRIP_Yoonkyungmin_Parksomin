@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import TripSignup from '@/components/TripSignup.vue'
+import TripSignup from '@/components/user/TripSignup.vue'
 
 
 

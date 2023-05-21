@@ -14,12 +14,12 @@
 </template>
 
 <script>
-import MyPage from '@/components/MyPage.vue'
+import MyPage from '@/components/user/MyPage.vue'
 import TripHeader from '@/components/TripHeader.vue'
-import MyPageInfo from '@/components/MyPageInfo.vue'
+import MyPageInfo from '@/components/user/MyPageInfo.vue'
 export default {
     name: 'MyPageView',
-    components: { TripHeader,MyPage, MyPageInfo },
+    components: { TripHeader, MyPage, MyPageInfo },
 }
 </script>
 
