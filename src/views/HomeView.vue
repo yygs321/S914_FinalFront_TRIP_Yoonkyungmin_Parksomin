@@ -7,7 +7,7 @@
 </template>
 
 <script>
-	import TripHeader from "@/components/TripHeader.vue";
+	import TripHeader from "@/components/layout/TripHeader.vue";
 	import TripMain from '@/components/TripMain.vue';
 	export default{
 		components: {TripHeader, TripMain}
@@ -16,13 +16,13 @@
 </script>
 
 
-	<style>
-	.container > input{
-		top: 100px;
-	}
-	.carousel-inner{
-		width: 100% !important;
-	}
+<style>
+.container > input{
+	top: 100px;
+}
+.carousel-inner{
+	width: 100% !important;
+}
 
 
-	</style>
+</style>

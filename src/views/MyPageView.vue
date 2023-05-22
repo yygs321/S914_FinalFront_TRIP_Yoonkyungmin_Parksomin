@@ -15,7 +15,7 @@
 
 <script>
 import MyPage from '@/components/user/MyPage.vue'
-import TripHeader from '@/components/TripHeader.vue'
+import TripHeader from '@/components/layout/TripHeader.vue'
 import MyPageInfo from '@/components/user/MyPageInfo.vue'
 export default {
     name: 'MyPageView',

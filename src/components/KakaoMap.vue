@@ -8,15 +8,13 @@
 
 export default {
     name: 'KakaoMap',
-    props : ["attraction"],
+    props : ["attraction", "latitude"],
     data() {
         return {
             map:null
         };
     },
     mounted() {
-        console.log(this.attraction.latitude)
-        console.log(this.attraction.longitude)
         // this.loadScript();
         if (window.kakao && window.kakao.maps) {
           // 카카오 객체가 있고, 카카오 맵그릴 준비가 되어 있다면 맵 실행

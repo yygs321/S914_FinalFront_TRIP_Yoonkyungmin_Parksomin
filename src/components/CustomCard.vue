@@ -28,11 +28,11 @@ export default {
     methods:{
     ratingToPercent() {
             return this.rating * 20 + 1.5;
+        },
+        moveDetail(){
+            this.$router.push({path: `/detail/${this.id}`})
         }
     },
-    moveDetail(){
-        this.$router.push({path: `/detail/${this.id}`})
-    }
 }
 </script>
 

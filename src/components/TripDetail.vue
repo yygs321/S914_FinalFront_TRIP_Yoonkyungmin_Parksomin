@@ -1,40 +1,64 @@
 <template>
 	<div>
 		<div class="container">
-      <h5 class="text-start"><i class="fa-solid fa-location-dot"></i> 서울</h5>
-      <h1 class="text-start">국립 청태산 자연 휴양림</h1>
-      <img src="@/assets/busan.jpg" alt="" class="w-100">
+      <h5 class="text-start"><i class="fa-solid fa-location-dot"></i> {{attraction.sido}}</h5>
+      <h1 class="text-start">{{attraction.title}}</h1>
+      <div class="star-ratings my-2" >
+          <div 
+          class="star-ratings-fill space-x-2 text-4xl"
+          :style="{ width: ratingToPercent() + '%'}"
+          >
+              <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+          </div>
+          <div class="star-ratings-base space-x-2 text-4xl">
+              <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+          </div>
+      </div>
+      <img :src="attraction.firstImage" alt="" class="w-100">
       <div class="row my-5">
         <div class="col-lg-8 pb-5">
-          <h3 id="main-address">부산</h3>
-          <p class="fst-italic">
-            광안리
+          <h3 class="text-start" id="main-address">{{attraction.addr1}}</h3>
+          <p class="fst-italic text-start">
+            {{attraction.overview}}
           </p>
         </div>
-        <kakao-map-vue :attraction="attraction"></kakao-map-vue>
+        <kakao-map-vue v-if="attractionLoaded" :attraction="attraction" ></kakao-map-vue>
       </div>
-    </div>
+    </div> 
 	</div>
-</template>
+</template>   
 
 <script>
   import KakaoMapVue from './KakaoMap.vue';
+  import http from "@/axios/axios-common.js"
 	export default {
 		name: 'TripDetail',
 		components:{KakaoMapVue},
     data(){
       return {
-        attraction:{
-          latitude:37.52251412000000000,
-          longitude: 128.29191150000000000
-        }
+        attraction:{},
+        attractionLoaded:false
       }
+    },
+    created(){
+      const contentId = this.$route.params.contentId;
+      this.selectDetail(contentId);
+
     },
 		methods:{
 			ratingToPercent() {
-				const score = 3 * 20;
+				const score = this.attraction.rating * 20;
 				return score + 1.5;
-			}
+			}, 
+
+      selectDetail(contentId){
+			http.get("/attractions/" + contentId)
+				.then((response) => 
+				{
+					this.attraction = response.data
+          this.attractionLoaded = true
+				})
+		},
 		}
 	}
 
@@ -65,12 +89,14 @@
   left: 0;
   overflow: hidden;
   -webkit-text-fill-color: rgb(42, 235, 155);
+  font-size: 30px;
 }
  
 .star-ratings-base {
   color: #aaa9a9; 
   z-index: 0;
   padding: 0;
+  font-size: 30px;
 }
 	
 </style>

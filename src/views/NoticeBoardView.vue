@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import TripHeader from '@/components/TripHeader.vue'
+import TripHeader from '@/components/layout/TripHeader.vue'
 import NoticeBoard from '@/components/notice/NoticeBoard.vue'
 export default {
   name:'NoticeBoardView',
