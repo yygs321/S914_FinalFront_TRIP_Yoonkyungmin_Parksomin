@@ -55,7 +55,7 @@
 <div class="container mt-5">
   <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
       <div v-for="(trip, index) in trips" :key="index" class="col">
-        <list-card-vue src="busan.jpg" :title="trip.title" :rating="trip.rating"></list-card-vue>
+        <list-card-vue :src="trip.firstImage" :title="trip.title" :rating="trip.rating"></list-card-vue>
       </div>
   </div>
 
@@ -90,53 +90,37 @@
 <script>
 	import AreaIndexVue from "./AreaIndex.vue"
   import ListCardVue from "./ListCard.vue"
+  import http from "@/axios/axios-common.js"
 	export default {
 		name: 'TripList',
 		components:{AreaIndexVue, ListCardVue},
     data(){
       return {
         trips: [
-          {
-            title: "부산 광안리",
-            rating: 3.5,
-          },
-          {
-            title: "부산 광안리",
-            rating: 3.1,
-          },
-          {
-            title: "부산 광안리",
-            rating: 4.5,
-          },
-          {
-            title: "부산 광안리",
-            rating: 1.5,
-          },
-          {
-            title: "부산 광안리",
-            rating: 2.5,
-          },
-          {
-            title: "부산 광안리",
-            rating: 3.0,
-          },
-          {
-            title: "부산 광안리",
-            rating: 4.8,
-          },
-          {
-            title: "부산 광안리",
-            rating: 2.3,
-          },
         ],
       }
 
     },
+
+    created(){
+      const keyword = this.$route.params.keyword;
+      this.search(keyword);
+    },
+
 		methods:{
 			ratingToPercent() {
 				const score = 3 * 20;
 				return score + 1.5;
-			}
+			},
+
+      search(keyword){
+        http.get("/attractions/search/"+ keyword)
+				.then((response) => 
+				{
+					this.trips = response.data
+					
+				})
+      }
 		}
 	}
 

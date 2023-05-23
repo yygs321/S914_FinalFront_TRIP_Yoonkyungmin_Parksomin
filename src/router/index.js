@@ -29,7 +29,7 @@ const routes = [
     component: TripSignupView
   },
   {
-    path: "/list",
+    path: "/list/:keyword",
     name: 'list',
     component: TripListView
   },

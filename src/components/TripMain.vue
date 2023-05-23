@@ -1,9 +1,11 @@
 <template>
 	<div>
 		<div class="container position-relative my-4">
-			<form class="form-control border-white shadow rounded-pill w-75 d-flex position-absolute top-50 start-50 translate-middle z-1" style="transform: translate(-50%, -50%); height:15%;">
-				<a class="btn"><i class="fa-solid fa-magnifying-glass" style="font-size: 1.5rem;"></i></a>
-				<input type="text" class="form-control w-75 border-white" placeholder="어디로 가시나요?">
+			<form class="form-control border-white shadow rounded-pill w-75 d-flex position-absolute top-50 start-50 translate-middle z-1"
+			style="transform: translate(-50%, -50%); height:15%;"
+			@submit="search">
+				<a class="btn" @click="search"><i class="fa-solid fa-magnifying-glass" style="font-size: 1.5rem;"></i></a>
+				<input type="text" class="form-control w-75 border-white" placeholder="어디로 가시나요?" v-model="keyword">
 			</form>
 
 			<img class="w-100 z-0 position-relative" src="@/assets/search_back.jpg" height="400px" alt="">
@@ -86,6 +88,7 @@ export default {
 		return{
 			carouselItems: [],
 			rawData: [],
+			keyword: ''
 		};
 	},
 
@@ -107,6 +110,16 @@ export default {
 					}
 				})
 		},
+
+		search(){
+			let keyword = this.keyword
+			console.log(keyword);
+			if (keyword == "" || keyword == "undefined")
+				alert('검색어를 입력해주세요!!')
+			else{
+				this.$router.push('list/' + keyword);
+			}
+		}
 	},
 }
 </script>
