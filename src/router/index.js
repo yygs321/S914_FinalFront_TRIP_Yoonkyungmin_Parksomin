@@ -7,6 +7,7 @@ import TripListView from '../views/TripListView'
 import MyPageView from '../views/MyPageView.vue'
 import TripDetailView from '../views/TripDetailView.vue'
 import NoticeBoardView from '../views/NoticeBoardView.vue'
+import TripNoticeView from '../views/TripNoticeView.vue'
 
 
 
@@ -50,7 +51,13 @@ const routes = [
     path: "/notices",
     name: 'notice',
     component: NoticeBoardView
-  }
+  },
+  {
+    path: "/insertNotice",
+    name: 'insertNotice',
+    component: TripNoticeView
+  },
+
 ]
 
 const router = new VueRouter({

@@ -7,7 +7,7 @@
 </template>
 
 <script>
-	import TripNotice from "@/components/TripNotice.vue";
+	import TripNotice from "@/components/notice/TripNotice.vue";
 	export default{
 		components: {TripNotice}
 	}
