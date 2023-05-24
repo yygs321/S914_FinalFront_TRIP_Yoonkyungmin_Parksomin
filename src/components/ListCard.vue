@@ -1,7 +1,7 @@
 <template>
     <div class="col">
         <div class="card">
-            <img :src="require(`@/assets/${src}`)" class="card-img-top w-100 h-75" alt="...">
+            <img :src="src" class="card-img-top w-100 h-100" alt="...">
             <div class="card-body">
                 <h5 class="card-title text-start">{{title}}</h5>
                 <div class="star-ratings">
@@ -61,5 +61,9 @@ export default {
     color: #aaa9a9; 
     z-index: 0;
     padding: 0;
+    }
+
+    img{
+        background-size: cover;
     }
 </style>

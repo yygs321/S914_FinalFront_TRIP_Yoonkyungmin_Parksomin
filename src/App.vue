@@ -23,7 +23,7 @@
 </template>
 
 <script>
-  import TripFooter from './components/TripFooter.vue'
+  import TripFooter from './components/layout/TripFooter.vue'
 
 	export default{
 		components: {TripFooter}
@@ -49,7 +49,9 @@ body{
   align-items: center;
 }
 
-
+.d-flex > button {
+  width: 15%;
+}
 
 .nav-pills > .nav-item > .nav-link {
   color: white;

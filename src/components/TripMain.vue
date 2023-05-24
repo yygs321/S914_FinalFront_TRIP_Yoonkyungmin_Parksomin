@@ -1,9 +1,11 @@
 <template>
 	<div>
 		<div class="container position-relative my-4">
-			<form class="form-control border-white shadow rounded-pill w-75 d-flex position-absolute top-50 start-50 translate-middle z-1" style="transform: translate(-50%, -50%); height:15%;">
-				<a class="btn"><i class="fa-solid fa-magnifying-glass" style="font-size: 1.5rem;"></i></a>
-				<input type="text" class="form-control w-75 border-white" placeholder="어디로 가시나요?">
+			<form class="form-control border-white shadow rounded-pill w-75 d-flex position-absolute top-50 start-50 translate-middle z-1"
+			style="transform: translate(-50%, -50%); height:15%;"
+			@submit="search">
+				<a class="btn" @click="search"><i class="fa-solid fa-magnifying-glass" style="font-size: 1.5rem;"></i></a>
+				<input type="text" class="form-control w-75 border-white" placeholder="어디로 가시나요?" v-model="keyword">
 			</form>
 
 			<img class="w-100 z-0 position-relative" src="@/assets/search_back.jpg" height="400px" alt="">
@@ -86,34 +88,18 @@ export default {
 		return{
 			carouselItems: [],
 			rawData: [],
+			keyword: ''
 		};
 	},
 
 	created() {
-		// const rawData = [
-			// { src: "gyeongbokgung.jpg", title: "서울 경복궁", rating: 4.5 },
-		// { src: "광안리.jpg", title: "부산 광안리", rating: 4.1 },
-		// { src: "강릉경포대.jpg", title: "강릉 경포대", rating: 4.3 },
-		// { src: "남산타워.jpg", title: "서울 남산타워", rating: 3.1 },
-		// { src: "섭지코지.jpg", title: "제주 섭지코지", rating: 3.8  },
-		// { src: "성산일출봉.jpg", title: "제주 성산일출봉", rating: 2.5  },
-		// { src: "불국사.jpg", title: "경주 불국사", rating: 1.5  },
-		// { src: "전주한옥마을.jpg", title: "전주 한옥마을", rating: 2.8  }
-		// ];
-		
-
 		this.selectTop();
-		
-		// console.log(this.rawData);
-
-
 	},
 	methods:{
 		selectTop(){
 			http.get("/attractions/top")
 				.then((response) => 
 				{
-					//sconsole.log(response.data);
 					this.rawData = response.data
 					
 				})
@@ -124,6 +110,16 @@ export default {
 					}
 				})
 		},
+
+		search(){
+			let keyword = this.keyword
+			console.log(keyword);
+			if (keyword == "" || keyword == "undefined")
+				alert('검색어를 입력해주세요!!')
+			else{
+				this.$router.push('list/' + keyword);
+			}
+		}
 	},
 }
 </script>

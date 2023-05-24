@@ -30,7 +30,7 @@ const routes = [
     component: TripSignupView
   },
   {
-    path: "/list",
+    path: "/list/:keyword",
     name: 'list',
     component: TripListView
   },
@@ -42,7 +42,7 @@ const routes = [
   },
 
   {
-    path: "/detail/:id",
+    path: "/detail/:contentId",
     name: 'detail',
     component: TripDetailView
   },
