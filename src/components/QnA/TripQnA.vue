@@ -16,22 +16,35 @@
                                 <input type="text" class="form-control" name="title" v-model="title">
                             </div>
                             <div class="form-group text-left d-flex">
-                                <label for="userId" style="width: 15%;">작성자</label>
-                                <input type="text" class="form-control" id="userId" name="userId" v-model="userId">
+                                <label for="pw" style="width: 15%;">작성자</label>
+                                <input type="text" class="form-control" id="name" name="name" v-model="name">
                             </div>
                             <div class="form-group text-left d-flex">
-                                <label for="createdAt" style="width: 15%;">작성 날짜</label>
-                                <input type="text" class="form-control" id="createdAt" name="createdAt" v-model="createdAt">
+                                <label for="name" style="width: 15%;">작성 날짜</label>
+                                <input type="text" class="form-control" id="date" name="date" v-model="date">
                             </div>
                             <div class="form-group text-left d-flex">
-                                <label for="content" style="width: 15%;">내 용</label>
+                                <label for="comment" style="width: 15%;">내 용</label>
                                 
                                 <textarea class="form-control" rows="5" id="content" name="content" v-model="content">
                                 </textarea>
                             </div>
-                            
+                            <!-- 공개여부-->
+                            <div class="form-group text-left d-flex" style="flex-direction: row;">
+                                <label for="secret" id="secret" style="width: 15%;">공개 여부</label>
+                                <div style="flex-direction: column; margin: 0;">
+                                    <div class="d-flex" style="width: 250px; margin: 0;">
+                                        <input id="all" name="all" type="radio" tabindex="5" checked="checked">
+                                        <label for="all" class="choice" style="display: inline-block; margin-left: 5px; width: 80%;">공개글</label>
+                                    </div>
+                                    <div class="d-flex" style="width: 250px; margin: 0;">
+                                        <input id="secret" name="secret" type="radio" tabindex="6">
+                                        <label for="secret" class="choice" style="display: inline-block; margin-left: 5px; width: 80%;">비밀글</label>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="d-grid mt-5">
-                                <button type="submit" class="btn rounded btn-secondary" @click="registNotice">
+                                <button type="submit" class="btn rounded btn-secondary">
                                     작성 완료
                                 </button>
                             </div>
@@ -51,18 +64,20 @@ export default {
     data() {
         return {
             title: "",
-            userId: "",
-            createdAt: "",
-            content: ""
+            name: "",
+            date: "",
+            content: "",
+            secret: ""
         };
     },
     methods: {
         registNotice() {
             http.post("/notices", {
                 title: this.title,
-                userId: this.userId,
-                createdAt: this.createdAt,
+                name: this.name,
+                date: this.date,
                 content: this.title,
+                secret: this.secret
             })
             .then(() => {
                 alert("등록 완료");

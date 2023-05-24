@@ -7,9 +7,11 @@
 </template>
 
 <script>
+	import TripHeader from "@/components/layout/TripHeader.vue";
 	import TripNotice from "@/components/notice/TripNotice.vue";
-	export default{
-		components: {TripNotice}
+export default {
+		
+		components: {TripNotice, TripHeader}
 	}
 
 </script>

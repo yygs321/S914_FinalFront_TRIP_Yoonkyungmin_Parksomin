@@ -53,7 +53,7 @@
                             </table>
                         </div>
                         <div class="row mr-1 mt-3"> 
-                            <a class="" id="writeBtn" aria-current="page"><router-link to="/login">글쓰기</router-link>
+                            <a class="" id="writeBtn" aria-current="page"><router-link to="/insertNotice">글쓰기</router-link>
                             </a>
                         </div>
                     </div>
