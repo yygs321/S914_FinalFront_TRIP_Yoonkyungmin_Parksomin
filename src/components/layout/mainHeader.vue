@@ -3,7 +3,20 @@
         <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
             <img src="@/assets/logo.png" class="fs-4 w-25"/>
         </a>
-        <ul class="nav nav-pills" >
+
+        <!-- after login-->
+        
+        <ul class="nav nav-pills" v-if="checkid">
+            <li class="nav-item"><a class="mx-1"  href="#" >님 환영합니다.</a></li>
+            <li class="nav-item">
+                <router-link :to="{ name: 'mypage' }" class="link align-self-center">마이페이지</router-link>
+            </li>
+            <li class="nav-item"><a class="nav-link mx-1 rounded-pill" id="logoutBtn" @click.prevent="onClickLogout"><router-link to="/">로그아웃</router-link></a></li>
+        </ul>
+    
+
+        <!-- before login-->
+        <ul class="nav nav-pills" v-else>
             <li class="nav-item"><a class="nav-link mx-1 rounded-pill" id="loginBtn" aria-current="page"><router-link to="/users/login">로그인</router-link></a></li>
             <li class="nav-item"><a class="nav-link mx-1 rounded-pill" id="signBtn"><router-link to="/signup">회원가입</router-link></a></li>
         </ul>
@@ -11,8 +24,42 @@
 </template>
 
 <script>
+import { mapState, mapGetters, mapActions } from "vuex";
+
+const memberStore = "memberStore";
+
 export default {
-    name:'MainHeader',
+    name: 'MainHeader',
+    data() {
+        return {
+            checkid:"check"
+        };
+    },
+    computed: {
+        ...mapState(memberStore, ["isLogin", "userInfo"]),
+        ...mapGetters(memberStore,["checkUserInfo"]),
+    },
+    created() { 
+        console.log("생성?");
+    },
+    methods: {
+        ...mapActions(memberStore, ["userLogout"]),
+        // ...mapMutations(memberStore, ["SET_IS_LOGIN", "SET_USER_INFO"]),
+        onClickLogout() {
+            // this.SET_IS_LOGIN(false);
+            // this.SET_USER_INFO(null);
+            // sessionStorage.removeItem("access-token");
+            // if (this.$route.path != "/") this.$router.push({ name: "main" });
+            console.log(this.userInfo.userid);
+            //vuex actions에서 userLogout 실행(Backend에 저장 된 리프레시 토큰 없애기
+            //+ satate에 isLogin, userInfo 정보 변경)
+            // this.$store.dispatch("userLogout", this.userInfo.userid);
+            this.userLogout(this.userInfo.userid);
+            sessionStorage.removeItem("access-token"); //저장된 토큰 없애기
+            sessionStorage.removeItem("refresh-token"); //저장된 토큰 없애기
+            if (this.$route.path != "/") this.$router.push({ name: "main" });
+        },
+    },
 }
 </script>
 
@@ -30,7 +77,7 @@ export default {
     background-color: black !important;
 }
 
-#loginBtn > a, #signBtn > a{
+#loginBtn > a, #signBtn > a, #logoutBtn >a{
     text-decoration: none !important;
     color: white !important;
     font-weight: 400;
