@@ -17,7 +17,7 @@
           
           <div class="form-floating mx-auto p-2" style="width: 70%;">
             <p type="password" style="float:left">Password</p>
-            <input type="password" class="form-control" id="pass" v-model="user.pass" placeholder="Password" @keyup.enter="confirm">
+            <input type="password" class="form-control" id="pass" v-model="user.userpwd" placeholder="Password" @keyup.enter="confirm">
           </div>
   
           
@@ -36,7 +36,7 @@
             <input type="checkbox" value="remember-me"> Remember me
           </label>
         </div>
-        <button id="submit" class="btn btn-lg btn-primary mb-2 rounded-pill" style="width: 15%;" type="button" @click="confirm">Login</button>
+        <button id="submit" class="btn btn-lg btn-primary mb-2 rounded-pill" style="width: 15%;" type="button" @click="confirm"><router-link to="/">Login</router-link></button>
       </form>
     </div>
   </header>
@@ -46,16 +46,17 @@
 import { mapState, mapActions } from "vuex";
 
 const memberStore = "memberStore";
+
 export default {
-  name: 'TripLogin',
+  name: "TripLogin",
   data() {
     return {
+      // isLoginError: false,
       user: {
         userid: null,
-        pass: null,
-
-      }
-    }
+        userpwd: null,
+      },
+    };
   },
   computed: {
     ...mapState(memberStore, ["isLogin", "isLoginError", "userInfo"]),
@@ -63,19 +64,20 @@ export default {
   methods: {
     ...mapActions(memberStore, ["userConfirm", "getUserInfo"]),
     async confirm() {
-      console.log(this.user)
       await this.userConfirm(this.user);
-      //let token = sessionStorage.getItem("access-token");
+      let token = sessionStorage.getItem("access-token");
       // console.log("1. confirm() token >> " + token);
       if (this.isLogin) {
-        //await this.getUserInfo(token);
+        await this.getUserInfo(token);
         // console.log("4. confirm() userInfo :: ", this.userInfo);
-        this.$router.push({ name: "/" });
+        this.$router.push({ name: "main" });
       }
     },
-
-  }
-}
+    movePage() {
+      this.$router.push({ name: "join" });
+    },
+  },
+};
 
 </script>
 
@@ -101,7 +103,7 @@ text-decoration: underline;
   color: black !important;
 }
 
-#submit {
+#submit >a{
   text-decoration: none !important;
   border: none;
   color: black;
