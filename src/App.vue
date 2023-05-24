@@ -50,7 +50,7 @@ body{
 }
 
 .d-flex > button {
-  width: 15%;
+  width: 10%;
 }
 
 .nav-pills > .nav-item > .nav-link {

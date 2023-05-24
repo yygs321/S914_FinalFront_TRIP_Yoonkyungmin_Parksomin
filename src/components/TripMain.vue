@@ -40,7 +40,7 @@
 			<div class="carousel-inner">
 			<div class="carousel-item ms-0 active">
 				<div class="row">
-					<custom-card-area-vue src="Seoul.jpg" title="서울"></custom-card-area-vue>
+					<custom-card-area-vue src="Seoul.jpg" title="서울" ></custom-card-area-vue>
 					<custom-card-area-vue src="busan.jpg" title="부산"></custom-card-area-vue>
 					<custom-card-area-vue src="jeju.jpg" title="제주"></custom-card-area-vue>
 				</div>
@@ -112,12 +112,10 @@ export default {
 		},
 
 		search(){
-			let keyword = this.keyword
-			console.log(keyword);
-			if (keyword == "" || keyword == "undefined")
+			if (this.keyword == "" || this.keyword == "undefined")
 				alert('검색어를 입력해주세요!!')
 			else{
-				this.$router.push('list/' + keyword);
+				this.$router.push('list/keyword/' + this.keyword);
 			}
 		}
 	},
