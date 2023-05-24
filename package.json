@@ -14,10 +14,13 @@
     "bootstrap-vue": "^2.23.1",
     "core-js": "^3.8.3",
     "jquery": "^3.7.0",
+    "jwt-decode": "^3.1.2",
     "summernote": "^0.8.20",
     "vue": "^2.7.14",
     "vue-router": "^3.5.1",
-    "vue3-summernote-editor": "^1.0.2"
+    "vue3-summernote-editor": "^1.0.2",
+    "vuex": "^4.1.0",
+    "vuex-persistedstate": "^4.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",

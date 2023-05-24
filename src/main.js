@@ -4,6 +4,7 @@ import router from './router'
 import 'bootstrap'
 // import 'bootstrap/dist/css/bootstrap.min.css'
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
+import store from './store'
 
 // Import Bootstrap and BootstrapVue CSS files (order is important)
 import 'bootstrap/dist/css/bootstrap.css'
@@ -21,6 +22,7 @@ Vue.use(IconsPlugin)
 new Vue({
   router,
   render: h => h(App),
+  store,
   component: ('SummernoteEditor', SummernoteEditor)
 }).$mount('#app')
 

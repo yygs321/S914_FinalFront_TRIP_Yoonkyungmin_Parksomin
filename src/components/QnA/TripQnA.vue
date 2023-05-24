@@ -7,7 +7,7 @@
                 <!-- 글 작성 시작-->
                 <div class="card border-0 p-2 p-md-3 p-lg-5">
                     <div class="card-header bg-white border-0 text-center">
-                        <h2>Notice</h2>
+                        <h2>QnA</h2>
                     </div>
                     <div class="container text-center">
                         <form>
@@ -60,19 +60,19 @@
 import http from "@/axios/axios-common.js"
 
 export default {
-    name: 'TripNotice',
+    name: 'TripQnA',
     data() {
         return {
             title: "",
             name: "",
-            date: "",
+            createdAt: "",
             content: "",
             secret: ""
         };
     },
     methods: {
-        registNotice() {
-            http.post("/notices", {
+        registQnA() {
+            http.post("/qnas", {
                 title: this.title,
                 name: this.name,
                 date: this.date,
@@ -81,7 +81,7 @@ export default {
             })
             .then(() => {
                 alert("등록 완료");
-                this.$router.push({path: `/notices`})
+                this.$router.push({path: `/qnas`})
             })
         }
     }

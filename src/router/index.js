@@ -20,7 +20,7 @@ const routes = [
     component: HomeView
   },
   {
-    path: "/login",
+    path: "/users/login",
     name: 'login',
     component: TripLoginView
   },
