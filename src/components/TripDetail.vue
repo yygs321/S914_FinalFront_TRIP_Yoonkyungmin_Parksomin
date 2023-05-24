@@ -14,7 +14,11 @@
 							<span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
 					</div>
 			</div>
+			
 			<img :src="attraction.firstImage" alt="" class="w-100">
+
+			<weather-table-vue v-if="attractionLoaded" :sido="attraction.sidoCode" :gugun="attraction.gugunCode" ></weather-table-vue>
+			
 			<div class="row my-5">
 				<div class="col-lg-8 pb-5">
 					<h3 class="text-start" id="main-address">{{attraction.addr1}}</h3>
@@ -25,7 +29,6 @@
 				<kakao-map-vue v-if="attractionLoaded" :attraction="attraction" ></kakao-map-vue>
 			</div>
 
-			<weather-table-vue v-if="attractionLoaded" :sido="attraction.sidoCode" :gugun="attraction.gugunCode" ></weather-table-vue>
 			
 		</div> 
 	</div>
@@ -106,6 +109,10 @@
 	z-index: 0;
 	padding: 0;
 	font-size: 30px;
+}
+
+img{
+	max-height: 110vh;
 }
 	
 </style>

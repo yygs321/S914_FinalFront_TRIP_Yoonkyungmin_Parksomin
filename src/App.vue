@@ -40,5 +40,23 @@ body{
   margin: 0 auto !important;
 }
 
+.d-flex{
+  align-items: center;
+}
+
+.d-flex > button {
+  width: 10%;
+}
+
+.nav-pills > .nav-item > .nav-link {
+  color: white;
+  background-color: black !important;
+}
+
+#loginBtn > a, #signBtn > a{
+  text-decoration: none !important;
+  color: white !important;
+}
+
 
 </style>

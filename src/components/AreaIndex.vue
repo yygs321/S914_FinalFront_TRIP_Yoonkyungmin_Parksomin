@@ -4,7 +4,7 @@
             <h5 class="d-flex position-absolute bottom-0 start-50 translate-middle z-1 text-white font-weight-bold" style="transform: translate(-50%, -50%);">
                 {{title}}
             </h5>
-            <img class="w-100 h-100 z-0 position-relative" :src="require(`@/assets/${src}`)" alt="">
+            <img class="w-100 h-100 z-0 position-relative" :src="require(`@/assets/${src}`)" alt="" @click="search">
         </div>
     </div>
 </template>
@@ -13,7 +13,14 @@
 
 export default {
     name: 'AreaIndex',
-    props : ["src","title"]
+    props : ["src","title"],
+    methods: {
+        search(){
+            this.$emit('input', this.title);
+            this.$router.push(`/list/${this.title}`);
+
+		},
+    }
 }
 </script>
 

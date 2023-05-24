@@ -1,7 +1,9 @@
 <template>
     <div class="col">
         <div class="card h-100">
-            <img :src="`${src}`" class="card-img-top w-100 h-75" alt="..." @click="moveDetail">
+            <!-- <img :src="`${src}`" class="card-img-top w-100 h-75" alt="..." @click="moveDetail"> -->
+            <img v-if="src && src !== 'undefined'" :src="src" class="card-img-top w-100 h-75" alt="" @click="moveDetail">
+            <img v-else src="@/assets/basic.png" class="card-img-top w-100 h-75" alt="" @click="moveDetail">
             <div class="card-body">
                 <h5 class="card-title fw-bold text-start">{{title}}</h5>
                 <div class="star-ratings">
@@ -26,9 +28,9 @@ export default {
     name: 'CustomCard',
     props : ["src","title", "rating", "id"],
     methods:{
-    ratingToPercent() {
-            return this.rating * 20 + 1.5;
-        },
+        ratingToPercent() {
+                return this.rating * 20 + 1.5;
+            },
         moveDetail(){
             this.$router.push({path: `/detail/${this.id}`})
         }

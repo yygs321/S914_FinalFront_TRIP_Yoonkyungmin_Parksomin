@@ -1,5 +1,6 @@
 <template>
-    <div class="container">
+    <div class="container my-5">
+        <h3 class="text-start mb-3">{{sidoName}} {{gugunName}} 날씨</h3>
         <table class="table">
             <tbody>
                 <tr>
@@ -30,7 +31,9 @@ export default {
     props : ["sido", "gugun"],
     data() {
         return {
-            weathers:{}
+            weathers:{},
+            sidoName:"",
+            gugunName:"",
         };
     },
     mounted() {
@@ -42,6 +45,8 @@ export default {
             .then((response) => 
             {
                 this.weathers = response.data
+                this.sidoName = this.weathers[0].sido
+                this.gugunName = this.weathers[0].gugun
             })
         },
     }
