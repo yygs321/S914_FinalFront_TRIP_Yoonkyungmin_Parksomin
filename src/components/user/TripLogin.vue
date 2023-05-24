@@ -11,13 +11,13 @@
 
           <div class="form-floating mx-auto p-2 mt-5 mb-2" style="width: 70%;">
             <p style="float:left">Id</p>
-            <input type="text" class="form-control" id="id" placeholder="ssafy">
+            <input type="text" class="form-control" id="id" v-model="user.userid" placeholder="ssafy" @keyup.enter="confirm">
             <!--<label for="floatingInput">Email address</label>-->
           </div>
           
           <div class="form-floating mx-auto p-2" style="width: 70%;">
             <p type="password" style="float:left">Password</p>
-            <input type="password" class="form-control" id="password" placeholder="Password">
+            <input type="password" class="form-control" id="pass" v-model="user.pass" placeholder="Password" @keyup.enter="confirm">
           </div>
   
           
@@ -26,7 +26,7 @@
         <div class="form-floating mx-auto p-2 mt-5 mb-2" id="need">
           <ul class="nav justify-content-center pb-3 mb-2">
             <li class="nav-item"><a class="nav-link px-2 text-body-secondary" id="sign"><router-link to="/signup">회원가입</router-link></a></li>
-            <li class="nav-item"><a class="nav-link px-2 text-body-secondary" id="pass"><router-link to="/signup">비밀번호 찾기</router-link></a></li>
+            <li class="nav-item"><a class="nav-link px-2 text-body-secondary" id="findpass"><router-link to="/signup">비밀번호 찾기</router-link></a></li>
           </ul>
         </div>
 
@@ -36,16 +36,47 @@
             <input type="checkbox" value="remember-me"> Remember me
           </label>
         </div>
-        <button id="submit" class="btn btn-lg btn-primary mb-2 rounded-pill" style="width: 15%;" type="submit">Login</button>
+        <button id="submit" class="btn btn-lg btn-primary mb-2 rounded-pill" style="width: 15%;" type="button" @click="confirm">Login</button>
       </form>
     </div>
   </header>
 </template>
 
 <script>
+import { mapState, mapActions } from "vuex";
+
+const memberStore = "memberStore";
 export default {
   name: 'TripLogin',
+  data() {
+    return {
+      user: {
+        userid: null,
+        pass: null,
+
+      }
+    }
+  },
+  computed: {
+    ...mapState(memberStore, ["isLogin", "isLoginError", "userInfo"]),
+  },
+  methods: {
+    ...mapActions(memberStore, ["userConfirm", "getUserInfo"]),
+    async confirm() {
+      console.log(this.user)
+      await this.userConfirm(this.user);
+      //let token = sessionStorage.getItem("access-token");
+      // console.log("1. confirm() token >> " + token);
+      if (this.isLogin) {
+        //await this.getUserInfo(token);
+        // console.log("4. confirm() userInfo :: ", this.userInfo);
+        this.$router.push({ name: "/" });
+      }
+    },
+
+  }
 }
+
 </script>
 
 <style>
@@ -53,11 +84,7 @@ export default {
 text-decoration: underline;
 }
 
-#submit {
-  border: none;
-  color: black;
-  font-weight: bold;
-}
+
 
 #title{
   font-size: 30px;
@@ -69,12 +96,13 @@ text-decoration: underline;
   font-weight: bold;
 }
 
-#sign > a, #pass > a{
+#sign > a, #findpass > a{
   text-decoration: none !important;
   color: black !important;
 }
 
 #submit {
+  text-decoration: none !important;
   border: none;
   color: black;
   font-weight: bold;

@@ -1,77 +1,87 @@
+
+
 <template>
-<div class="insertBoard">
-    <section class="section-header">
-        <div class="container">
-        <!-- 글 작성 시작-->
-        <div class="card border-0 p-2 p-md-3 p-lg-5">
-            <div class="card-header bg-white border-0 text-center">
-            <h2>게시판 글 작성</h2>
-
+    <div class="insertBoard">
+        <section class="section-header">
+            <div class="container">
+                <!-- 글 작성 시작-->
+                <div class="card border-0 p-2 p-md-3 p-lg-5">
+                    <div class="card-header bg-white border-0 text-center">
+                        <h2>Notice</h2>
+                    </div>
+                    <div class="container text-center">
+                        <form>
+                            <div class="form-group text-left mt-3 d-flex">
+                                <label for="title" style="width: 15%;">제 목</label>
+                                <input type="text" class="form-control" name="title" v-model="title">
+                            </div>
+                            <div class="form-group text-left d-flex">
+                                <label for="userId" style="width: 15%;">작성자</label>
+                                <input type="text" class="form-control" id="userId" name="userId" v-model="userId">
+                            </div>
+                            <div class="form-group text-left d-flex">
+                                <label for="createdAt" style="width: 15%;">작성 날짜</label>
+                                <input type="text" class="form-control" id="createdAt" name="createdAt" v-model="createdAt">
+                            </div>
+                            <div class="form-group text-left d-flex">
+                                <label for="content" style="width: 15%;">내 용</label>
+                                
+                                <textarea class="form-control" rows="5" id="content" name="content" v-model="content">
+                                </textarea>
+                            </div>
+                            
+                            <div class="d-grid mt-5">
+                                <button type="submit" class="btn rounded btn-secondary" @click="registNotice">
+                                    작성 완료
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
-            <div class="card-body px-0 pt-0">
-            <form action="/notice/insertProcess" method="post">
-                <div class="mb-4">
-                <label for="title">제목</label>
-                <div class="input-group">
-
-                    <input
-                            type="text"
-                            class="form-control"
-                            placeholder="제목을 작성해주세요"
-                            id="title"
-                            required=""
-                            name="title"
-                    />
-                </div>
-                </div>
-
-                <div class="mb-4">
-                <label for="message">내용</label>
-                <textarea
-                        placeholder="내용을 입력해주세요"
-                        class="form-control"
-                        id="message"
-                        rows="10"
-                        required=""
-                        name="content"
-                ></textarea>
-                </div>
-                <div class="d-grid">
-                <button type="submit" class="btn rounded btn-secondary" >
-                    작성 완료
-                </button>
-                </div>
-            </form>
-            </div>
-        </div>
-        <!-- 글 작성 완료-->
-        </div>
-    </section>
-
-    
-</div>
+        </section>
+    </div>
 </template>
 
 <script>
+import http from "@/axios/axios-common.js"
 
 export default {
-    name: 'NoticeInsert',
+    name: 'TripNotice',
     data() {
-        
-    },
-    created() {
-        
+        return {
+            title: "",
+            userId: "",
+            createdAt: "",
+            content: ""
+        };
     },
     methods: {
-        
-    },
+        registNotice() {
+            http.post("/notices", {
+                title: this.title,
+                userId: this.userId,
+                createdAt: this.createdAt,
+                content: this.title,
+            })
+            .then(() => {
+                alert("등록 완료");
+                this.$router.push({path: `/notices`})
+            })
+        }
+    }
+
 };
 </script>
 
 <style scoped>
+label {
+    width: 15%;
+    text-align: left;
+}
 
-
-
-
+div {
+    margin-bottom: 5%;
+}
 
 </style>

@@ -4,10 +4,12 @@ import router from './router'
 import 'bootstrap'
 // import 'bootstrap/dist/css/bootstrap.min.css'
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
+import store from './store'
 
 // Import Bootstrap and BootstrapVue CSS files (order is important)
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
+import SummernoteEditor from 'vue3-summernote-editor';
 
 Vue.config.productionTip = false
 
@@ -19,5 +21,8 @@ Vue.use(IconsPlugin)
 
 new Vue({
   router,
-  render: h => h(App)
+  render: h => h(App),
+  store,
+  component: ('SummernoteEditor', SummernoteEditor)
 }).$mount('#app')
+
