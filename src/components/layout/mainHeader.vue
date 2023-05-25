@@ -5,11 +5,11 @@
         </a>
 
         <!-- after login-->
-
+        
         <ul class="nav nav-pills" v-if="userInfo">
-            <li class="nav-item"><a class="mx-1"  href="#" >님 환영합니다.</a></li>
+            <li class="nav-item d-flex">{{userInfo.name}}({{userInfo.id}})님 환영합니다.</li>
             <li class="nav-item">
-                <router-link :to="{ name: 'mypage' }" class="link align-self-center">마이페이지</router-link>
+                <a class="nav-link mx-1 rounded-pill" id="loginBtn" aria-current="page"><router-link to="/users/mypage">마이페이지</router-link></a>
             </li>
             <li class="nav-item"><a class="nav-link mx-1 rounded-pill" id="logoutBtn" @click.prevent="onClickLogout"><router-link to="/">로그아웃</router-link></a></li>
         </ul>

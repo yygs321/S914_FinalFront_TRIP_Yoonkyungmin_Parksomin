@@ -35,11 +35,13 @@ const memberStore = {
   },
   actions: {
     async userConfirm({ commit }, user) {
+      console.log(user)
 
       await login(
         user,
         ({ data }) => {
           if (data.message === "success") {
+            console.log("success");
             let accessToken = data["access-token"];
             let refreshToken = data["refresh-token"];
             // console.log("login success token created!!!! >> ", accessToken, refreshToken);
@@ -61,13 +63,13 @@ const memberStore = {
     },
     async getUserInfo({ commit, dispatch }, token) {
       let decodeToken = jwtDecode(token);
-      // console.log("2. getUserInfo() decodeToken :: ", decodeToken);
+      console.log("2. getUserInfo() decodeToken :: ", decodeToken);
       await findById(
-        decodeToken.userid,
+        decodeToken.id,
         ({ data }) => {
           if (data.message === "success") {
             commit("SET_USER_INFO", data.userInfo);
-            // console.log("3. getUserInfo data >> ", data);
+            console.log("3. getUserInfo data >> ", data);
           } else {
             console.log("유저 정보 없음!!!!");
           }

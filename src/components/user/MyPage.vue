@@ -49,7 +49,7 @@
                                         <form class="form mt-5" autocomplete="off">
                                         <div class="mb-4">
                                                 <label for="InfoName" style="float:left">사용자 ID</label><br>
-                                                <a class="form-control rounded-pill" id="InfoId" required=""> 유저ID</a>
+                                                <a class="form-control rounded-pill" id="InfoId" required=""> {{userinfo.userid}}</a>
                                         </div>
                                         <div class="mb-4">
                                                 <label for="InfoOne" style="float:left">이름</label><br>

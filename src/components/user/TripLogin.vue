@@ -11,13 +11,13 @@
 
           <div class="form-floating mx-auto p-2 mt-5 mb-2" style="width: 70%;">
             <p style="float:left">Id</p>
-            <input type="text" class="form-control" id="id" v-model="user.userid" placeholder="ssafy" @keyup.enter="confirm">
+            <input type="text" class="form-control" id="id" v-model="user.id" placeholder="ssafy" @keyup.enter="confirm">
             <!--<label for="floatingInput">Email address</label>-->
           </div>
           
           <div class="form-floating mx-auto p-2" style="width: 70%;">
             <p type="password" style="float:left">Password</p>
-            <input type="password" class="form-control" id="pass" v-model="user.userpwd" placeholder="Password" @keyup.enter="confirm">
+            <input type="password" class="form-control" id="pass" v-model="user.pass" placeholder="Password" @keyup.enter="confirm">
           </div>
   
           
@@ -36,7 +36,7 @@
             <input type="checkbox" value="remember-me"> Remember me
           </label>
         </div>
-        <button id="submit" class="btn btn-lg btn-primary mb-2 rounded-pill" style="width: 15%;" type="button" @click="confirm"><router-link to="/">Login</router-link></button>
+        <button id="submit" class="btn btn-lg btn-primary mb-2 rounded-pill" style="width: 15%;" type="button" @click="confirm">Login</button>
       </form>
     </div>
   </header>
@@ -53,8 +53,8 @@ export default {
     return {
       // isLoginError: false,
       user: {
-        userid: null,
-        userpwd: null,
+        id: null,
+        pass: null,
       },
     };
   },
@@ -64,15 +64,15 @@ export default {
   methods: {
     ...mapActions(memberStore, ["userConfirm", "getUserInfo"]),
     async confirm() {
-      console.log(this.$memberStore.userInfo)
       await this.userConfirm(this.user);
       let token = sessionStorage.getItem("access-token");
-      // console.log("1. confirm() token >> " + token);
+      console.log("1. confirm() token >> " + token);
+      console.log("this.isLogin : " + this.isLogin)
       if (this.isLogin) {
         
         await this.getUserInfo(token);
-        // console.log("4. confirm() userInfo :: ", this.userInfo);
-        this.$router.push({ name: "main" });
+        console.log("4. confirm() userInfo :: ", this.userInfo);
+        this.$router.push("/");
       }
     },
     movePage() {
