@@ -44,7 +44,11 @@
                                 <tbody>
                                     <tr class="odd" v-for="notice in notices" :key="notice.id">
                                             <td>{{ notice.id }}</td>
-                                            <td>{{ notice.title }}</td>
+                                            <td>
+                                                <router-link :to="`/notices/${notice.id}`">
+                                                    {{ notice.title }}
+                                                </router-link>
+                                            </td>
                                             <td>{{ notice.content }}</td>
                                             <td>{{ notice.createdAt }}</td>
                                     </tr>
@@ -52,9 +56,11 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div class="row mr-1 mt-3"> 
-                            <a class="" id="writeBtn" aria-current="page"><router-link to="/insertNotice">글쓰기</router-link>
-                            </a>
+                        <div class="mt-3" style="fl"> 
+                            
+                            <button v-if="isEditable" id="writeBtn" class="btn btn-lg btn-primary mb-2 mx-2 rounded-pill" style="width: 10%; float: right;"  @click="goToInsert">
+                                글쓰기
+                            </button>
                         </div>
                     </div>
                     <div v-else class="text-center">내용이 없습니다.</div>
@@ -64,21 +70,16 @@
                         <!-- Pagination -->
                         <nav aria-label="Page navigation">
                             <ul class="pagination justify-content-center mt-4">
-                            <li class="page-item disabled">
-                                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-                            </li>
-                            <li class="page-item active" aria-current="page">
-                                <a class="page-link" href="#">1</a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link" href="#">2</a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link" href="#">3</a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link" href="#">Next</a>
-                            </li>
+                                <li class="page-item" :class="{ 'disabled': currentPage === 1 }">
+                                    <a class="page-link" href="#" @click="previousPage">이전</a>
+                                </li>
+                                <li class="page-item" v-for="pageNumber in displayedPages" :key="pageNumber" :class="{ 'active': pageNumber === currentPage }">
+                                    <a class="page-link" href="#" @click="goToPage(pageNumber)">{{ pageNumber }}</a>
+                                </li>
+                                
+                                <li class="page-item" :class="{ 'disabled': currentPage === totalPages }">
+                                    <a class="page-link" href="#" @click="nextPage">다음</a>
+                                </li>
                             </ul>
                         </nav>
                     </div>
@@ -91,23 +92,84 @@
 
 <script>
 import http from "@/axios/axios-common.js"
+import { mapState } from "vuex";
+const memberStore = "memberStore";
 
 export default {
     name: 'NoticeBoard',
     data() {
         return {
             notices: [],
+            currentPage: 1,
+			pageSize: 12,
+			maxDisplayedPages: 5,
         };
+    },
+    computed: {
+        ...mapState(memberStore, ["userInfo"]),
+        isEditable() {
+            //userInfo가 없는데 grade를 찾으려하면 error 발생
+            if (this.userInfo) {
+                return this.userInfo.grade == 0
+            }
+            return false;
+        },
+        totalPages() {
+			return Math.ceil(this.notices.length / this.pageSize);
+		},
+
+		displayedNotices() {
+			const startIndex = (this.currentPage - 1) * this.pageSize;
+			const endIndex = startIndex + this.pageSize;
+			return this.notices.slice(startIndex, endIndex);
+		},
+		displayedPages() {
+		const totalPages = this.totalPages;
+		const currentPage = this.currentPage;
+		const maxDisplayedPages = this.maxDisplayedPages;
+		let startPage = 1;
+		let endPage = totalPages;
+
+		if (totalPages > maxDisplayedPages) {
+			const halfDisplayedPages = Math.floor(maxDisplayedPages / 2);
+			if (currentPage <= halfDisplayedPages) {
+			endPage = maxDisplayedPages;
+			} else if (currentPage >= totalPages - halfDisplayedPages) {
+			startPage = totalPages - maxDisplayedPages + 1;
+			} else {
+			startPage = currentPage - halfDisplayedPages;
+			endPage = currentPage + halfDisplayedPages;
+			}
+		}
+
+		return Array(endPage - startPage + 1)
+			.fill()
+			.map((_, index) => startPage + index);
+		},
     },
     created() {
         this.selectAll();
     },
     methods: {
         selectAll() {
-            http.get("/notices")
-                .then((response) => (this.notices = response.data))
-                .catch(console.log("data확인"))
+            http.get("/notices").then((response)=> (this.notices=response.data))
         },
+        goToInsert() {
+            this.$router.push('/insertNotice');
+        },
+        previousPage() {
+			if (this.currentPage > 1) {
+				this.currentPage--;
+			}
+		},
+		nextPage() {
+			if (this.currentPage < this.totalPages) {
+				this.currentPage++;
+			}
+		},
+		goToPage(pageNumber) {
+			this.currentPage = pageNumber;
+		},
     },
 };
 </script>
@@ -115,13 +177,13 @@ export default {
 <style scoped>
 
 
-#writeBtn >a {
+#writeBtn {
 border: none;
 color: black;
 font-weight: bold;
+font-size: medium;
 text-decoration: none !important;
-float:right
-
+background-color:rgb(124, 224, 194);
 }
 
 

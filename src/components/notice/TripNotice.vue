@@ -15,14 +15,7 @@
                                 <label for="title" style="width: 15%;">제 목</label>
                                 <input type="text" class="form-control" name="title" v-model="title">
                             </div>
-                            <div class="form-group text-left d-flex">
-                                <label for="userId" style="width: 15%;">작성자</label>
-                                <input type="text" class="form-control" id="userId" name="userId" v-model="userId">
-                            </div>
-                            <div class="form-group text-left d-flex">
-                                <label for="createdAt" style="width: 15%;">작성 날짜</label>
-                                <input type="text" class="form-control" id="createdAt" name="createdAt" v-model="createdAt">
-                            </div>
+                            
                             <div class="form-group text-left d-flex">
                                 <label for="content" style="width: 15%;">내 용</label>
                                 
@@ -31,9 +24,8 @@
                             </div>
                             
                             <div class="d-grid mt-5">
-                                <button type="submit" class="btn rounded btn-secondary" @click="registNotice">
-                                    작성 완료
-                                </button>
+                                <input type="button" value="작성 완료" class="btn rounded btn-secondary" @click="registNotice"/>
+                                
                             </div>
                         </form>
                     </div>
@@ -51,22 +43,19 @@ export default {
     data() {
         return {
             title: "",
-            userId: "",
-            createdAt: "",
             content: ""
         };
     },
     methods: {
         registNotice() {
-            http.post("/notices", {
+            http.post("/insertNotice", {
                 title: this.title,
-                userId: this.userId,
-                createdAt: this.createdAt,
-                content: this.title,
+                content: this.content,
+                userId: this.$store.state.memberStore.userInfo.id
             })
             .then(() => {
                 alert("등록 완료");
-                this.$router.push({path: `/notices`})
+                this.$router.push({ path: "/notices" });
             })
         }
     }

@@ -2,17 +2,17 @@
 <div class="container">
 	<!-- insert Notice-->
 	<trip-header></trip-header>
-	<trip-notice></trip-notice>
+	<notice-one></notice-one>
 </div>
 
 </template>
 
 <script>
 	import TripHeader from "@/components/layout/TripHeader.vue";
-	import TripNotice from "@/components/notice/TripNotice.vue";
+import NoticeOne from '@/components/notice/NoticeOne.vue';
 export default {
 		
-		components: {TripNotice, TripHeader}
+		components: { TripHeader, NoticeOne}
 	}
 
 </script>
