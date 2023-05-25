@@ -13,7 +13,7 @@
                         <form>
                             <div class="form-group text-left mt-3 d-flex">
                                 <label for="title" style="width: 15%;">제 목</label>
-                                <input type="text" class="form-control" name="title" v-model="title">
+                                <div class="view">{{notice.title}}</div>
                             </div>
                             <div class="form-group text-left d-flex">
                                 <label for="pw" style="width: 15%;">작성자</label>
@@ -28,6 +28,21 @@
                                 <div class="view">{{notice.content}}</div>
                             </div>
                             
+                            <!-- 공개여부-->
+                            <div class="form-group text-left d-flex" style="flex-direction: row;">
+                                <label for="secret" id="secret" style="width: 15%;">공개 여부</label>
+                                <div style="flex-direction: column; margin: 0;">
+                                    <div class="d-flex" style="width: 250px; margin: 0;">
+                                        <input id="all" name="all" type="radio" tabindex="5" checked="checked">
+                                        <label for="all" class="choice" style="display: inline-block; margin-left: 5px; width: 80%;">공개글</label>
+                                    </div>
+                                    <div class="d-flex" style="width: 250px; margin: 0;">
+                                        <input id="secret" name="secret" type="radio" tabindex="6">
+                                        <label for="secret" class="choice" style="display: inline-block; margin-left: 5px; width: 80%;">비밀글</label>
+                                    </div>
+                                </div>
+                            </div>
+
                             <!-- 작성자인 경우에만 수정, 삭제 버튼 보이도록-->
                             <div class="d-grid mt-5">
                                 <button v-if="isEditable" type="button" class="btn rounded btn-secondary"  value="수정" @click="modify(notice.id)">
@@ -51,31 +66,26 @@ const memberStore = "memberStore";
 
 export default {
     name: 'NoticeOne',
-    data:function() {
+    data() {
         return {
             notice: {},
         };
-    },
-    created() {
-        const id = this.$route.params.id;
-        this.selectOne(id);
     },
     computed: {
         ...mapState(memberStore, ["userInfo"]),
         isEditable() {
             if (this.userInfo) {
-                return (this.notice.userId == this.userInfo.id) && (this.notice.grade==0) ;
+                return this.notice.grade==0;
             }
             return false;
             
         },
     },
+    created() {
+        const id = this.$route.params.id;
+        this.selectOne(id);
+    },
     methods: {
-        selectOne(id) {
-            http.get("notices/" + id).then((response) => {
-                this.book = response.data;
-            })
-        },
         modify(id) {
             http.put("/notices/" + id, {
                 title: this.notice.title,
