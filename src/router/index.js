@@ -9,6 +9,7 @@ import TripDetailView from '../views/TripDetailView.vue'
 import NoticeBoardView from '../views/NoticeBoardView.vue'
 import TripNoticeView from '../views/TripNoticeView.vue'
 import NoticeOneView from '../views/NoticeOneView.vue'
+import NoticeModifyView from '../views/NoticeModifyView.vue'
 
 
 
@@ -72,6 +73,11 @@ const routes = [
     path: "/notices/:id",
     name: 'noticeOne',
     component: NoticeOneView
+  },
+    {
+    path: "/notices/modify/:id",
+    name: 'noticeModify',
+    component: NoticeModifyView
   },
 
 ]

@@ -42,7 +42,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr class="odd" v-for="notice in notices" :key="notice.id">
+                                    <tr class="odd" v-for="notice in displayedNotices" :key="notice.id">
                                             <td>{{ notice.id }}</td>
                                             <td>
                                                 <router-link :to="`/notices/${notice.id}`">
@@ -101,7 +101,7 @@ export default {
         return {
             notices: [],
             currentPage: 1,
-			pageSize: 12,
+			pageSize: 10,
 			maxDisplayedPages: 5,
         };
     },
