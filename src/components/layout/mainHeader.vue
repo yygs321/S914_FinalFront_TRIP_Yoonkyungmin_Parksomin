@@ -5,8 +5,8 @@
         </a>
 
         <!-- after login-->
-        
-        <ul class="nav nav-pills" v-if="checkid">
+
+        <ul class="nav nav-pills" v-if="userInfo">
             <li class="nav-item"><a class="mx-1"  href="#" >님 환영합니다.</a></li>
             <li class="nav-item">
                 <router-link :to="{ name: 'mypage' }" class="link align-self-center">마이페이지</router-link>
@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import { mapState, mapGetters, mapActions } from "vuex";
+import { mapState, mapActions } from "vuex";
 
 const memberStore = "memberStore";
 
@@ -36,8 +36,8 @@ export default {
         };
     },
     computed: {
-        ...mapState(memberStore, ["isLogin", "userInfo"]),
-        ...mapGetters(memberStore,["checkUserInfo"]),
+        ...mapState(memberStore, ["userInfo"]),
+        //...mapGetters(memberStore,["checkUserInfo"]),
     },
     created() { 
         console.log("생성?");

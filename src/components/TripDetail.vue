@@ -69,6 +69,7 @@
 					this.attractionLoaded = true
 				})
 			},
+			
 
 
 		}
