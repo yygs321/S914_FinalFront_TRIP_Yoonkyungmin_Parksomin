@@ -14,7 +14,7 @@
                 <span class="me-2">더보기</span>
                 <!-- <i class="fa-solid fa-ellipsis"></i> -->
                   <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                    <li><a class="dropdown-item" href="#">공지사항</a></li>
+                    <li><a class="dropdown-item" @click="goToNotice">공지사항</a></li>
                     <li><a class="dropdown-item" href="#">Q&A</a></li>
                 </ul>
             </button>
@@ -31,7 +31,10 @@ export default {
     methods:{
 		search(contentId){
             this.$router.push('list/category/' + contentId);
-		}
+        },
+        goToNotice() {
+            this.$router.push('/notices');
+        }
 	},
 }
 </script>

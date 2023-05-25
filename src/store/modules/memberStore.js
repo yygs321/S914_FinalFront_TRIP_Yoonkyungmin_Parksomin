@@ -58,6 +58,7 @@ const memberStore = {
           }
         },
         (error) => {
+          alert("로그인 정보를 다시 확인해주세요!")
           console.log(error);
         }
       );

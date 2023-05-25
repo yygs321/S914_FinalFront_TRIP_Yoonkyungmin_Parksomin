@@ -40,7 +40,6 @@ export default {
         //...mapGetters(memberStore,["checkUserInfo"]),
     },
     created() { 
-        console.log("생성?");
     },
     methods: {
         ...mapActions(memberStore, ["userLogout"]),
