@@ -4,26 +4,26 @@
   <header class="pt-5 pb-1">
     <div class="container-xxl bd-gutter pt-md-3 pb-md-5 pr-3 pl-md-3">
       <form>
-        <h1 id="title" class="h3 mb-5 fw-normal">Login</h1>
+        <h1 id="title" class="h3 mb-5 fw-normal text-center">Login</h1>
 
 
         <div id="board">
 
-          <div class="form-floating mx-auto p-2 mt-5 mb-2" style="width: 70%;">
-            <p style="float:left">Id</p>
-            <input type="text" class="form-control" id="id" v-model="user.id" placeholder="ssafy" @keyup.enter="confirm">
+          <div class="mx-auto p-2 mt-5 mb-2" style="width: 70%;">
+            <p style="float:left">아이디</p>
+            <input type="text" class="form-control form-control-lg" id="id" v-model="user.id" @keyup.enter="confirm">
             <!--<label for="floatingInput">Email address</label>-->
           </div>
           
-          <div class="form-floating mx-auto p-2" style="width: 70%;">
-            <p type="password" style="float:left">Password</p>
-            <input type="password" class="form-control" id="pass" v-model="user.pass" placeholder="Password" @keyup.enter="confirm">
+          <div class="mx-auto p-2" style="width: 70%;">
+            <p type="password" style="float:left">비밀번호</p>
+            <input type="password" class="form-control form-control-lg" id="pass" v-model="user.pass" @keyup.enter="confirm">
           </div>
   
           
         </div>
         
-        <div class="form-floating mx-auto p-2 mt-5 mb-2" id="need">
+        <div class="mx-auto p-2 mt-5 mb-2" id="need">
           <ul class="nav justify-content-center pb-3 mb-2">
             <li class="nav-item"><a class="nav-link px-2 text-body-secondary" id="sign"><router-link to="/signup">회원가입</router-link></a></li>
             <li class="nav-item"><a class="nav-link px-2 text-body-secondary" id="findpass"><router-link to="/signup">비밀번호 찾기</router-link></a></li>
@@ -36,7 +36,7 @@
             <input type="checkbox" value="remember-me"> Remember me
           </label>
         </div>
-        <button id="submit" class="btn btn-lg btn-primary mb-2 rounded-pill" style="width: 15%;" type="button" @click="confirm">Login</button>
+        <button id="submit" class="btn btn-lg btn-primary mb-2 rounded-pill" style="width: 15%;" type="button" @click="confirm">로그인</button>
       </form>
     </div>
   </header>

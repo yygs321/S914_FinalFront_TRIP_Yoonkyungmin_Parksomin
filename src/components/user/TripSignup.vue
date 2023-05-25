@@ -9,7 +9,7 @@
         <div id="board">
           
           <div class="mx-auto p-2 mt-5 mb-2" style="width: 70%;">
-            <p class="text-start">ID</p>
+            <p class="text-start">아이디</p>
             <div class="d-flex ">
               <input type="text" class="form-control form-control-lg vertical-center-input" id="id" v-model="id">
               <a class="ms-2 rounded-pill btn btn-dark col-2 h-100" id="dupCheck" @click="dupCheck">중복확인</a>
@@ -18,24 +18,32 @@
           </div>
           
           <div class="mx-auto p-2  mb-2" style="width: 70%;">
-            <p type="password" style="float:left">Password</p>
+            <p type="password" style="float:left">비밀번호</p>
             <input type="password" class="form-control form-control-lg vertical-center-input" id="password" v-model="password">
           </div>
 
           <div class="mx-auto p-2  mb-2" style="width: 70%;">
-            <p style="float:left">Name</p>
+            <p type="password" style="float:left">비밀번호 확인</p>
+            <input type="password" class="form-control form-control-lg vertical-center-input" id="password" v-model="password2">
+            <p v-if="pwChk == false" class="text-danger text-start">비밀번호가 맞지 않습니다!</p>
+          </div>
+
+          
+
+          <div class="mx-auto p-2  mb-2" style="width: 70%;">
+            <p style="float:left">이름</p>
             <input type="text" class="form-control form-control-lg vertical-center-input" id="name" v-model="username">
             <!--<label for="floatingInput">Email address</label>-->
           </div>
   
           <div class="mx-auto p-2  mb-2" style="width: 70%;">
-            <p style="float:left">Email</p>
+            <p style="float:left">이메일</p>
             <input type="email" class="form-control form-control-lg vertical-center-input" id="email" v-model="email">
             <!--<label for="floatingInput">Email address</label>-->
           </div>
   
           <div class="mx-auto p-2 mb-5" style="width: 70%;">
-            <p style="float:left">Address</p>
+            <p style="float:left">주소</p>
             <input type="text" class="form-control form-control-lg vertical-center-input" id="address" v-model="address">
             <!--<label for="floatingInput">Email address</label>-->
           </div>
@@ -43,7 +51,7 @@
         </div>
 
 
-        <button class="btn btn-lg btn-primary mb-2 rounded-pill" style="width: 15%;" id="submit" @click="signUp">Sign up</button>
+        <button class="btn btn-lg btn-primary mb-2 rounded-pill" style="width: 15%;" id="submit" @click="signUp">회원가입</button>
       </form>
     </div>
   </header>
@@ -58,9 +66,11 @@ export default {
       id:"",
       username:"",
       password:"",
+      password2: "",
       email:"",
       address:"",
-      dupChk: false 
+      dupChk: false,
+      pwChk:true
     }
   },
   watch: {
@@ -70,16 +80,38 @@ export default {
 					this.dupChk = false
 				},
 		},
+    password: {
+				immediate: true,
+				handler() {
+					if(this.password == this.password2)
+            this.pwChk = true
+          else
+            this.pwChk = false
+				},
+		},
+    password2: {
+				immediate: true,
+				handler() {
+          if(this.password == this.password2)
+            this.pwChk = true
+          else
+            this.pwChk = false
+				},
+		},
 
 	},
   methods: {
     signUp(){
       if (this.id == undefined || this.id == "")
         alert('아이디를 입력해주세요')
-      else if (this.dupCheck)
+      else if (this.dupCheck == false)
         alert('아이디 중복체크를 해주세요')
       else if (this.username == undefined || this.username == "")
         alert('이름을 입력해주세요')
+      else if (this.password == undefined || this.password == "")
+        alert('비밀번호를 입력해주세요')
+      else if (this.pwChk == false)
+        alert('비밀번호를 확인해주세요.')
       else if (this.email == undefined || this.email == "")
         alert('이메일을 입력해주세요')
       else if (this.address == undefined || this.address == "")
