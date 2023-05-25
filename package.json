@@ -19,7 +19,7 @@
     "vue": "^2.7.14",
     "vue-router": "^3.5.1",
     "vue3-summernote-editor": "^1.0.2",
-    "vuex": "^4.1.0",
+    "vuex": "^3.6.2",
     "vuex-persistedstate": "^4.1.0"
   },
   "devDependencies": {
