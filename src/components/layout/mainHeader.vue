@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import { mapState, mapGetters, mapActions } from "vuex";
+import { mapState, mapActions } from "vuex";
 
 const memberStore = "memberStore";
 
@@ -36,8 +36,8 @@ export default {
         };
     },
     computed: {
-        ...mapState(memberStore, ["isLogin", "userInfo"]),
-        ...mapGetters(memberStore,["checkUserInfo"]),
+        ...mapState(memberStore, ["userInfo"]),
+        //...mapGetters(memberStore,["checkUserInfo"]),
     },
     created() { 
         console.log("생성?");
