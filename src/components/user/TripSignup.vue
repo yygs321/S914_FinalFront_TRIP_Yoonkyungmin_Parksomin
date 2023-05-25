@@ -68,7 +68,7 @@ export default {
       password:"",
       password2: "",
       email:"",
-      address:"",
+      address: "",
       dupChk: false,
       pwChk:true
     }
@@ -123,6 +123,7 @@ export default {
           pass: this.password,
           email: this.email,
           address: this.address
+
         })
         .then((response) => 
         {

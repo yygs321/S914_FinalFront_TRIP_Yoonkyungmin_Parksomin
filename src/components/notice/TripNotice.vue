@@ -48,7 +48,7 @@ export default {
     },
     methods: {
         registNotice() {
-            http.post("/insertNotice", {
+            http.post("/insertNotices", {
                 title: this.title,
                 content: this.content,
                 userId: this.$store.state.memberStore.userInfo.id
