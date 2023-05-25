@@ -13,7 +13,7 @@
                         <form>
                             <div class="form-group text-left mt-3 d-flex">
                                 <label for="title" style="width: 15%;">제 목</label>
-                                <input type="text" class="form-control" name="title" v-model="notice.title" readonly>
+                                <input type="text" class="form-control" name="title" v-model="notice.title">
                             </div>
                             <div class="form-group text-left mt-3 d-flex">
                                 <label for="title" style="width: 15%;">작성자</label>
@@ -24,17 +24,13 @@
                             
                             <div class="form-group text-left d-flex">
                                 <label for="content" style="width: 15%;">내 용</label>                                
-                                <textarea class="form-control" rows="5" id="content" name="content" v-model="notice.content" readonly>
+                                <textarea class="form-control" rows="5" id="content" name="content" v-model="notice.content">
                                 </textarea>
                             </div>
                             
                             <div class="mt-5 text-end">
-                                <button v-if="isEditable" type="button" class="btn rounded btn-secondary me-1"  value="수정" @click="moveModify(notice.id)">
-                                    수정
-                                </button>
-                                <button v-if="isEditable" type="button" class="btn rounded btn-secondary" value="삭제" @click="remove(notice.id)">
-                                    삭제
-                                </button>
+                                <input v-if="isEditable" type="button" class="btn rounded btn-secondary me-1"  @click="modify(notice.id)" value="저장">
+                                <input v-if="isEditable" type="button" class="btn rounded btn-secondary" value="취소" @click="cancelEdit()">
                             </div>
                         </form>
                     </div>
@@ -50,15 +46,12 @@ import { mapState } from "vuex";
 const memberStore = "memberStore";
 
 export default {
-    name: 'NoticeOne',
-    data:function() {
+    name: 'NoticeModify',
+    data() {
         return {
             notice: {},
+            originalNotice: {}, // 저장 이전의 공지사항 데이터를 저장할 변수 추가
         };
-    },
-    created() {
-        const id = this.$route.params.id;
-        this.selectOne(id);
     },
     computed: {
         ...mapState(memberStore, ["userInfo"]),
@@ -70,7 +63,28 @@ export default {
             
         },
     },
+    created() {
+        const id = this.$route.params.id;
+        this.selectOne(id);
+    },
     methods: {
+        modify(id) {
+            alert('수정!!!')
+            http.put("/notices/"+id, {
+                title: this.notice.title,
+                content: this.notice.content,
+                id: this.$route.params.id
+                
+            })
+            .then((response) => {
+                alert("수정이 완료되었습니다.")
+                this.notice=response.data
+                this.$router.push({ path: `/notices/${id}` });
+            })
+            .catch((error) => {
+                console.error("수정 실패:", error);
+            });
+        },
         remove(id) {
             http.delete("/notices/" + id).then(() => {
                     alert("삭제가 완료되었습니다!");
@@ -84,10 +98,10 @@ export default {
 					this.notice = response.data
 				})
         },
-        moveModify(id){
-            this.$router.push("/notices/modify/" + id)
-        }
-        
+        cancelEdit() {
+        // 수정 취소 시 원래 데이터로 복원
+            this.notice = { ...this.originalNotice };
+        },
     }
 
 };
